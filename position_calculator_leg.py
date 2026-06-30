@@ -1,9 +1,9 @@
 from pathlib import Path
-
+import numpy as np
 import pybullet as p
 import pybullet_data
 import time
-import math
+import matplotlib.pyplot as plt
 
 # --- 1. Initialize PyBullet ---
 physicsClient = p.connect(p.GUI) 
@@ -12,10 +12,9 @@ p.setGravity(0, 0, -9.81)
 
 # --- 2. Load the URDF ---
 path = Path('/mnt/c/Users/saharl/Documents/V3.5/closed_loop_test/leg_urdf/robot/urdf/robot.urdf')
-robot_id = p.loadURDF(str(path), basePosition=[0, 0, 0], useFixedBase=True)
+robot_id = p.loadURDF(str(path), basePosition=[0, 0, 0], useFixedBase=True, globalScaling=10.0)
 
 # --- 3. Dynamically Map Joints and Links ---
-# This dictionary will let us look up the PyBullet index using the URDF names
 joint_dict = {}
 link_dict = {}
 
@@ -24,93 +23,131 @@ for i in range(num_joints):
     info = p.getJointInfo(robot_id, i)
     joint_name = info[1].decode('utf-8')
     child_link_name = info[12].decode('utf-8')
-    
     joint_dict[joint_name] = i
     link_dict[child_link_name] = i
 
 # --- 4. Close the Kinematic Loops ---
-# Loop 1: loc1 to loc1_
 constraint_1 = p.createConstraint(
-    parentBodyUniqueId=robot_id,
-    parentLinkIndex=link_dict['loc1'],
-    childBodyUniqueId=robot_id,
-    childLinkIndex=link_dict['loc1_'],
-    jointType=p.JOINT_POINT2POINT,
-    jointAxis=[0, 0, 0],
-    parentFramePosition=[0, 0, 0], 
-    childFramePosition=[0, 0, 0]   
+    parentBodyUniqueId=robot_id, parentLinkIndex=link_dict['loc1'],
+    childBodyUniqueId=robot_id, childLinkIndex=link_dict['loc1_'],
+    jointType=p.JOINT_POINT2POINT, jointAxis=[0, 0, 0],
+    parentFramePosition=[0, 0, 0], childFramePosition=[0, 0, 0]   
 )
 
-# Loop 2: loc2 to loc2_
 constraint_2 = p.createConstraint(
-    parentBodyUniqueId=robot_id,
-    parentLinkIndex=link_dict['loc2'],
-    childBodyUniqueId=robot_id,
-    childLinkIndex=link_dict['loc2_'],
-    jointType=p.JOINT_POINT2POINT,
-    jointAxis=[0, 0, 0],
-    parentFramePosition=[0, 0, 0], 
-    childFramePosition=[0, 0, 0]   
+    parentBodyUniqueId=robot_id, parentLinkIndex=link_dict['loc2'],
+    childBodyUniqueId=robot_id, childLinkIndex=link_dict['loc2_'],
+    jointType=p.JOINT_POINT2POINT, jointAxis=[0, 0, 0],
+    parentFramePosition=[0, 0, 0], childFramePosition=[0, 0, 0]   
 )
 
-# Make the closures rigid
 p.changeConstraint(constraint_1, maxForce=100000)
 p.changeConstraint(constraint_2, maxForce=100000)
 
 # --- 5. Setup Control ---
-# Identify the main driving motors
-# "base_link_to_new_link" drives the down-crank, "motor_up_joint" drives the up-crank
 drive_down_idx = joint_dict['base_link_to_new_link']
 drive_up_idx = joint_dict['motor_up_joint']
-
-# The central gimbal joints that will be passively pushed/pulled
 pitch_idx = joint_dict['pitch_joint']
 roll_idx = joint_dict['roll_joint']
 
-# Turn off default motors for ALL joints first so they are fully passive
+# Turn off default motors for ALL joints so they are fully passive
 for j in range(num_joints):
     p.setJointMotorControl2(robot_id, j, p.VELOCITY_CONTROL, force=0)
 
-# --- 6. Run the Simulation ---
-print("Starting parallel mechanism simulation. Press Ctrl+C to stop.")
+# --- 6. Generate the Grid ---
+# Define the range of motion for pitch and roll in degrees, then convert to radians
+# Example: -15 to +15 degrees, taking 5 steps (e.g., -15, -7.5, 0, 7.5, 15)
+pitch_angles = np.deg2rad(np.arange(-20, 50, 2))
+roll_angles = np.deg2rad(np.arange(-20, 20, 2))
+
+# --- 7. Run the Grid Simulation ---
+print("Starting IK Grid Calculation...")
+print("-" * 75)
+
+# Optional list to store results if you want to plot or save them later
+kinematic_data = []
+motor_up_data = np.zeros((len(pitch_angles), len(roll_angles)))
+motor_down_data = np.zeros((len(pitch_angles), len(roll_angles)))
 
 try:
-    while True:
-        # Generate two sine waves, slightly out of phase, to drive the two motors
-        t = time.time()
-        target_down = math.sin(t * 2) * 0.5 
-        target_up = math.sin((t * 2) + 1.0) * 0.5 
-        
-        # Drive Motor Down
-        p.setJointMotorControl2(
-            bodyUniqueId=robot_id,
-            jointIndex=drive_down_idx,
-            controlMode=p.POSITION_CONTROL,
-            targetPosition=target_down,
-            force=2500 
-        )
-        
-        # Drive Motor Up
-        p.setJointMotorControl2(
-            bodyUniqueId=robot_id,
-            jointIndex=drive_up_idx,
-            controlMode=p.POSITION_CONTROL,
-            targetPosition=target_up,
-            force=2500 
-        )
-        
-        # Step the physics engine
+    for i, target_pitch in enumerate(pitch_angles):
+        for j, target_roll in enumerate(roll_angles):
+            
+            # 1. Drive Pitch and Roll to the target grid position
+            p.setJointMotorControl2(
+                bodyUniqueId=robot_id,
+                jointIndex=pitch_idx,
+                controlMode=p.POSITION_CONTROL,
+                targetPosition=target_pitch,
+                force=5000 
+            )
+            
+            p.setJointMotorControl2(
+                bodyUniqueId=robot_id,
+                jointIndex=roll_idx,
+                controlMode=p.POSITION_CONTROL,
+                targetPosition=target_roll,
+                force=5000 
+            )
+            
+            # 2. Step the simulation multiple times to let the constraints settle
+            # We don't use time.sleep() here so it computes as fast as your CPU allows
+            for _ in range(100):
+                p.stepSimulation()
+                # Uncomment the next line ONLY if you want to watch it move slowly in the GUI
+                # time.sleep(1./240.) 
+            
+            # 3. Read the resulting passive angles of the motors
+            mot_down_state = p.getJointState(robot_id, drive_down_idx)[0]
+            mot_up_state = p.getJointState(robot_id, drive_up_idx)[0]
+            motor_up_data[i,j] = np.rad2deg(mot_up_state)
+            motor_down_data[i,j] = np.rad2deg(mot_down_state)
+
+            # 4. Save and Print the data
+            kinematic_data.append({
+                "pitch_deg": np.rad2deg(target_pitch),
+                "roll_deg": np.rad2deg(target_roll),
+                "mot_down_deg": np.rad2deg(mot_down_state),
+                "mot_up_deg": np.rad2deg(mot_up_state)
+            })
+            
+            print(f"Target Pitch: {np.rad2deg(target_pitch):+6.1f}° | Target Roll: {np.rad2deg(target_roll):+6.1f}° || "
+                  f"Req Mot_Dn: {np.rad2deg(mot_down_state):+6.1f}° | Req Mot_Up: {np.rad2deg(mot_up_state):+6.1f}°")
+
+    print("-" * 75)
+    print(f"Grid calculation complete. Collected {len(kinematic_data)} data points.")
+    
+    i=0
+    j=0
+    # Keep window open at the end until user closes it
+    while i < len(pitch_angles) and j < len(roll_angles):
         p.stepSimulation()
-        
-        # Read the resulting passive angles of the central Pitch and Roll joints
-        pitch_state = p.getJointState(robot_id, pitch_idx)[0]
-        roll_state = p.getJointState(robot_id, roll_idx)[0]
-        
-        # Print the kinematics
-        print(f"Mot_Dn: {target_down:+.2f} | Mot_Up: {target_up:+.2f} || Result Pitch: {pitch_state:+.2f} | Result Roll: {roll_state:+.2f}", end='\r')
-        
-        # Real-time stepping
-        time.sleep(1./240.) 
+        time.sleep(1./240.)
+        i +=1
+        j +=1
+    
+    np.save("kinematic_results_up.npy", motor_up_data)
+    np.save("kinematic_results_down.npy", motor_down_data)
+    p.disconnect()
+    print("Simulator closed.")
+    
+    x, y = np.meshgrid(pitch_angles, roll_angles, indexing='ij')  # Create a meshgrid for plotting
+    fig = plt.figure(figsize=(10, 7))
+    ax = fig.add_subplot(111, projection='3d')
+    surf = ax.plot_surface(np.rad2deg(x), np.rad2deg(y), motor_up_data, 
+                       cmap='coolwarm',    # Color map
+                       linewidth=0,        # Removes grid lines on the surface
+                       antialiased=True,   # Smooths the edges
+                       shade=True,         # Enables lighting/shading
+                       alpha=0.9)          # Slight transparency
+    plt.title('motor up')
+    plt.xlabel('pitch angle')
+    plt.ylabel('roll angle')
+    plt.colorbar(surf, shrink=0.5, aspect=5)  # Add a color bar to show the scale
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    
+    plt.show()
 
 except KeyboardInterrupt:
     print("\nSimulation stopped.")
