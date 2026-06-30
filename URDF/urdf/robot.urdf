@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Mentee Robotics LTD-->
+<robot name="robot">
+  <material name="Steel">
+    <color rgba="0.7921568627 0.8196078431 0.9333333333 1" />
+  </material>
+  <link name="base_link">
+    <inertial>
+      <origin xyz="5.43588744E-18 0.0025 2.993330088E-19" rpy="0 0 0" />
+      <mass value="0.01105365046" />
+      <inertia ixx="2.336591423E-07" ixy="-6.462348536E-25" ixz="1.982539192E-38" iyy="2.034196116E-05" iyz="7.030123981E-41" izz="2.015435889E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/base_link/component_0_21.stl" />
+      </geometry>
+      <material name="Steel" />
+    </visual>
+  </link>
+  <joint name="joint_1" type="revolute">
+    <origin xyz="0.07 0 0" rpy="1.570796327 -1.570796327 0" />
+    <parent link="base_link" />
+    <child link="link1" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.57" upper="1.57" velocity="1" effort="1" />
+  </joint>
+  <link name="link1">
+    <inertial>
+      <origin xyz="0.07 2.775557562E-17 0.0035" rpy="0 0 0" />
+      <mass value="0.01105365046" />
+      <inertia ixx="2.336591423E-07" ixy="2.144966407E-38" ixz="-6.462348545E-25" iyy="2.015435889E-05" iyz="-1.029069951E-35" izz="2.034196116E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/link1/component_0_23.stl" />
+      </geometry>
+      <material name="Steel" />
+    </visual>
+  </link>
+  <joint name="joint_2" type="revolute">
+    <origin xyz="0.14 0 0.001" rpy="0 0 1.570796327" />
+    <parent link="link1" />
+    <child link="link_2" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" velocity="1" effort="1" />
+  </joint>
+  <link name="link_2">
+    <inertial>
+      <origin xyz="0.09952781548 -0.009706386904 -0.0035" rpy="0 0 0" />
+      <mass value="0.01555365046" />
+      <inertia ixx="8.514501219E-07" ixy="5.373436525E-06" ixz="2.083635372E-23" iyy="5.542581025E-05" iyz="-7.765114848E-25" izz="5.62124535E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/link_2/component_0_25.stl" />
+      </geometry>
+      <material name="Steel" />
+    </visual>
+  </link>
+  <joint name="joint_3" type="revolute">
+    <origin xyz="0.199055631 -0.01941277381 -0.001" rpy="0 0 1.473579395" />
+    <parent link="link_2" />
+    <child link="link_3" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" velocity="1" effort="1" />
+  </joint>
+  <link name="link_3">
+    <inertial>
+      <origin xyz="0.07646394167 0.037125 0.0035" rpy="0 0 0" />
+      <mass value="0.01330365046" />
+      <inertia ixx="6.914951565E-06" ixy="-1.366447695E-05" ixz="-1.32213867E-22" iyy="2.842436629E-05" iyz="-5.62327778E-23" izz="3.528388598E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/link_3/component_0_24.stl" />
+      </geometry>
+      <material name="Steel" />
+    </visual>
+  </link>
+  <joint name="joint_4" type="fixed">
+    <origin xyz="0.1529278833 0.07425 0.001" rpy="0 0 2.02279538" />
+    <parent link="link_3" />
+    <child link="link_4" />
+  </joint>
+  <link name="link_4">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.0001" />
+      <inertia ixx="1E-07" ixy="0" ixz="0" iyy="1E-07" iyz="0" izz="1E-07" />
+    </inertial>
+  </link>
+  <joint name="joint_4_" type="fixed">
+    <origin xyz="-0.07 -0.001 0" rpy="1.570796327 -0.354782122 0" />
+    <parent link="base_link" />
+    <child link="link_4_" />
+  </joint>
+  <link name="link_4_">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.0001" />
+      <inertia ixx="1E-07" ixy="0" ixz="0" iyy="1E-07" iyz="0" izz="1E-07" />
+    </inertial>
+  </link>
+</robot>

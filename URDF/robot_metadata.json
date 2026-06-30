@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "links": [
+    {
+      "name": "base_link",
+      "inertial_component_count": 1,
+      "visual_component_count": 1,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    },
+    {
+      "name": "link1",
+      "inertial_component_count": 1,
+      "visual_component_count": 1,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    },
+    {
+      "name": "link_2",
+      "inertial_component_count": 1,
+      "visual_component_count": 1,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    },
+    {
+      "name": "link_3",
+      "inertial_component_count": 1,
+      "visual_component_count": 1,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    },
+    {
+      "name": "link_4",
+      "inertial_component_count": 0,
+      "visual_component_count": 0,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    },
+    {
+      "name": "link_4_",
+      "inertial_component_count": 0,
+      "visual_component_count": 0,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    }
+  ]
+}

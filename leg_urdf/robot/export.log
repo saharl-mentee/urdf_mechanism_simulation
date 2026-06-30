@@ -1,0 +1,312 @@
+2026-06-30 14:55:06,586 INFO  UrdfExportService.cs: 128 - Starting URDF export: sourceAssembly='C:\PDM\Projects\020-URDF\020-AS-02318.SLDASM' outputDir='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot' exportStl=True
+2026-06-30 14:55:06,589 INFO  UrdfExportService.cs: 147 - Export tree contains 17 link(s); root='base_link'
+2026-06-30 14:55:06,590 INFO  UrdfExportService.cs: 172 - Mesh output directory: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes'
+2026-06-30 14:55:06,593 INFO  UrdfExportService.cs: 173 - Found 4 hidden components
+2026-06-30 14:55:06,593 INFO  UrdfExportService.cs: 179 - Saved current STL export preferences
+2026-06-30 14:55:06,593 INFO  UrdfExportService.cs: 179 - Set STL export preferences for URDF export
+2026-06-30 14:55:06,597 INFO  SolidWorksService.cs: 640 - ResolveAllLightWeightComponents returned 0
+2026-06-30 14:55:09,186 INFO  SolidWorksService.cs: 808 - ReadWholeAssemblyMass: whole-assembly mass = 7.23971 kg
+2026-06-30 14:55:09,219 INFO  UrdfExportService.cs: 249 - EnsureFullyRebuilt: doc already fully rebuilt
+2026-06-30 14:55:10,542 INFO  SolidWorksService.cs: 808 - ReadWholeAssemblyMass: whole-assembly mass = 7.23971 kg
+2026-06-30 14:55:10,543 INFO  UrdfExportService.cs: 250 - Tier 0 warm-up mass pre-rebuild=7.23971 kg post-rebuild=7.23971 kg
+2026-06-30 14:55:10,544 INFO  UrdfExportService.cs: 304 - Pass 1: computing link properties (inertials, joints, materials)
+2026-06-30 14:55:11,901 INFO  MassPropertyService.cs: 78 - MassPropertyService: scope opened — MassProperty2 will be reused across links
+2026-06-30 14:55:11,902 INFO  UrdfExportService.cs: 525 - Computing properties: 'base_link' parent='<root>' originCS='base part' jointCS='<none>' inertialPids=4 visualPids=4 collisionPids=0
+2026-06-30 14:55:11,903 INFO  UrdfExportService.cs: 540 - Link 'base_link' resolved components: inertial=4 visual=4
+2026-06-30 14:55:11,903 INFO  UrdfExportService.cs: 551 - Link 'base_link': inertial 4 component(s) ? 4 leaf part(s)
+2026-06-30 14:55:11,903 INFO  UrdfExportService.cs: 556 - Link 'base_link': computing inertial via coordSys='base part'
+2026-06-30 14:55:12,023 INFO  MassPropertyService.cs: 283 - Computed inertial for link 'base_link': mass=1.88059 kg com=(-0.0366894,-1.37804E-05,-0.566563) components=4
+2026-06-30 14:55:12,024 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'base_link': RGBA(0.898039215686275, 0.917647058823529, 0.929411764705882, 1) Name: SOLIDWORKS_Materials|6061-T6_(SS)|164
+2026-06-30 14:55:12,024 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'base_link': RGBA(0.898039215686275, 0.917647058823529, 0.929411764705882, 1) Name: SOLIDWORKS_Materials|6061-T6_(SS)|164
+2026-06-30 14:55:12,025 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'base_link': RGBA(0.898039215686275, 0.917647058823529, 0.929411764705882, 1) Name: SOLIDWORKS_Materials|7075-T6,_Plate_(SS)|178
+2026-06-30 14:55:12,025 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'base_link': RGBA(0.898039215686275, 0.917647058823529, 0.929411764705882, 1) Name: SOLIDWORKS_Materials|7075-T6,_Plate_(SS)|178
+2026-06-30 14:55:12,026 INFO  UrdfExportService.cs: 525 - Computing properties: 'motor_up' parent='base_link' originCS='<none>' jointCS='motor up cs' inertialPids=1 visualPids=1 collisionPids=0
+2026-06-30 14:55:12,026 INFO  UrdfExportService.cs: 1034 - Localized joint 'motor_up_joint' origin: xyz=(-0.0842193,0,-0.479206) rpy=(1.5708,-0.409751,-1.5708)
+2026-06-30 14:55:12,026 INFO  UrdfExportService.cs: 527 - Normalized joint 'motor_up_joint' axis to (0,0,1)
+2026-06-30 14:55:12,027 INFO  UrdfExportService.cs: 540 - Link 'motor_up' resolved components: inertial=1 visual=1
+2026-06-30 14:55:12,027 INFO  UrdfExportService.cs: 551 - Link 'motor_up': inertial 1 component(s) ? 1 leaf part(s)
+2026-06-30 14:55:12,027 INFO  UrdfExportService.cs: 556 - Link 'motor_up': computing inertial via coordSys='motor up cs'
+2026-06-30 14:55:12,118 INFO  MassPropertyService.cs: 283 - Computed inertial for link 'motor_up': mass=0.152023 kg com=(0.00530056,4.09885E-07,0.000335592) components=1
+2026-06-30 14:55:12,119 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'motor_up': RGBA(0.698039215686274, 0.698039215686274, 0.698039215686274, 1) Name: Custom_Materials|17-4_PH_H900
+2026-06-30 14:55:12,120 INFO  UrdfExportService.cs: 525 - Computing properties: 'motor_up_crank_roll' parent='motor_up' originCS='<none>' jointCS='crank motor up cs1' inertialPids=1 visualPids=1 collisionPids=0
+2026-06-30 14:55:12,120 INFO  UrdfExportService.cs: 1034 - Localized joint 'motor_up_crank_roll_joint' origin: xyz=(0.045,0,0.018) rpy=(0,0,2.73184)
+2026-06-30 14:55:12,121 INFO  UrdfExportService.cs: 527 - Normalized joint 'motor_up_crank_roll_joint' axis to (0,0,1)
+2026-06-30 14:55:12,121 INFO  UrdfExportService.cs: 540 - Link 'motor_up_crank_roll' resolved components: inertial=1 visual=1
+2026-06-30 14:55:12,123 INFO  UrdfExportService.cs: 551 - Link 'motor_up_crank_roll': inertial 1 component(s) ? 1 leaf part(s)
+2026-06-30 14:55:12,123 INFO  UrdfExportService.cs: 556 - Link 'motor_up_crank_roll': computing inertial via coordSys='crank motor up cs1'
+2026-06-30 14:55:12,184 INFO  MassPropertyService.cs: 283 - Computed inertial for link 'motor_up_crank_roll': mass=0.00867359 kg com=(-9.82371E-10,-4.26943E-10,-0.0012675) components=1
+2026-06-30 14:55:12,185 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'motor_up_crank_roll': RGBA(0.698039215686274, 0.698039215686274, 0.698039215686274, 1) Name: Custom_Materials|17-4_PH_H900
+2026-06-30 14:55:12,983 INFO  UrdfExportService.cs: 525 - Computing properties: 'motor_up_crank_yaw' parent='motor_up_crank_roll' originCS='<none>' jointCS='crank motor up cs2' inertialPids=2 visualPids=2 collisionPids=0
+2026-06-30 14:55:12,984 INFO  UrdfExportService.cs: 1034 - Localized joint 'motor_up_crank_yaw_joint' origin: xyz=(0,0,0) rpy=(1.5483,-0.00918677,1.5404)
+2026-06-30 14:55:12,984 INFO  UrdfExportService.cs: 527 - Normalized joint 'motor_up_crank_yaw_joint' axis to (0,0,1)
+2026-06-30 14:55:12,984 INFO  UrdfExportService.cs: 540 - Link 'motor_up_crank_yaw' resolved components: inertial=2 visual=2
+2026-06-30 14:55:12,984 INFO  UrdfExportService.cs: 551 - Link 'motor_up_crank_yaw': inertial 2 component(s) ? 2 leaf part(s)
+2026-06-30 14:55:12,984 INFO  UrdfExportService.cs: 556 - Link 'motor_up_crank_yaw': computing inertial via coordSys='crank motor up cs2'
+2026-06-30 14:55:13,093 INFO  MassPropertyService.cs: 283 - Computed inertial for link 'motor_up_crank_yaw': mass=0.4687 kg com=(0.153959,-0.00137837,-0.00137831) components=2
+2026-06-30 14:55:13,094 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'motor_up_crank_yaw': RGBA(0.647058823529412, 0.619607843137255, 0.588235294117647, 1) Name: SOLIDWORKS_Materials|AISI_304|1
+2026-06-30 14:55:13,095 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'motor_up_crank_yaw': RGBA(0.698039215686274, 0.698039215686274, 0.698039215686274, 1) Name: Custom_Materials|17-4_PH_H900
+2026-06-30 14:55:13,095 INFO  UrdfExportService.cs: 525 - Computing properties: 'crank_foot_up_roll' parent='motor_up_crank_yaw' originCS='<none>' jointCS='crank foot up cs1' inertialPids=1 visualPids=1 collisionPids=0
+2026-06-30 14:55:13,095 WARN  UrdfExportService.cs: 1008 - Joint 'crank_foot_up_roll_joint': backward CS detected (Z anti-aligned with displacement) but rotation axis is ˜Z — cannot auto-correct. Fix the SolidWorks coordinate system orientation.
+2026-06-30 14:55:13,096 INFO  UrdfExportService.cs: 1034 - Localized joint 'crank_foot_up_roll_joint' origin: xyz=(0.314974,-0.00286352,-0.00286328) rpy=(-3.11099,-0.0224908,1.56161)
+2026-06-30 14:55:13,096 INFO  UrdfExportService.cs: 527 - Normalized joint 'crank_foot_up_roll_joint' axis to (0,0,1)
+2026-06-30 14:55:13,096 INFO  UrdfExportService.cs: 540 - Link 'crank_foot_up_roll' resolved components: inertial=1 visual=1
+2026-06-30 14:55:13,096 INFO  UrdfExportService.cs: 551 - Link 'crank_foot_up_roll': inertial 1 component(s) ? 1 leaf part(s)
+2026-06-30 14:55:13,097 INFO  UrdfExportService.cs: 556 - Link 'crank_foot_up_roll': computing inertial via coordSys='crank foot up cs1'
+2026-06-30 14:55:13,168 INFO  MassPropertyService.cs: 283 - Computed inertial for link 'crank_foot_up_roll': mass=0.00867359 kg com=(7.12264E-13,3.32256E-12,-0.0012675) components=1
+2026-06-30 14:55:13,169 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'crank_foot_up_roll': RGBA(0.698039215686274, 0.698039215686274, 0.698039215686274, 1) Name: Custom_Materials|17-4_PH_H900
+2026-06-30 14:55:13,169 INFO  UrdfExportService.cs: 525 - Computing properties: 'crank_foot_up_yaw' parent='crank_foot_up_roll' originCS='<none>' jointCS='crank foot up cs2' inertialPids=1 visualPids=1 collisionPids=0
+2026-06-30 14:55:13,170 INFO  UrdfExportService.cs: 1034 - Localized joint 'crank_foot_up_yaw_joint' origin: xyz=(0,0,0) rpy=(0,1.5708,0)
+2026-06-30 14:55:13,170 INFO  UrdfExportService.cs: 527 - Normalized joint 'crank_foot_up_yaw_joint' axis to (0,0,1)
+2026-06-30 14:55:13,170 INFO  UrdfExportService.cs: 540 - Link 'crank_foot_up_yaw' resolved components: inertial=1 visual=1
+2026-06-30 14:55:13,171 INFO  UrdfExportService.cs: 551 - Link 'crank_foot_up_yaw': inertial 1 component(s) ? 1 leaf part(s)
+2026-06-30 14:55:13,171 INFO  UrdfExportService.cs: 556 - Link 'crank_foot_up_yaw': computing inertial via coordSys='crank foot up cs2'
+2026-06-30 14:55:13,253 INFO  MassPropertyService.cs: 283 - Computed inertial for link 'crank_foot_up_yaw': mass=0.0105025 kg com=(-3.69878E-13,-3.33067E-15,-1.0035E-13) components=1
+2026-06-30 14:55:13,253 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'crank_foot_up_yaw': RGBA(0.647058823529412, 0.619607843137255, 0.588235294117647, 1) Name: SOLIDWORKS_Materials|AISI_304|1
+2026-06-30 14:55:13,255 INFO  UrdfExportService.cs: 525 - Computing properties: 'loc1' parent='crank_foot_up_yaw' originCS='<none>' jointCS='crank foot up cs2' inertialPids=0 visualPids=0 collisionPids=0
+2026-06-30 14:55:13,255 INFO  UrdfExportService.cs: 1034 - Localized joint 'loc1_j' origin: xyz=(0,0,0) rpy=(0,0,0)
+2026-06-30 14:55:13,255 INFO  UrdfExportService.cs: 540 - Link 'loc1' resolved components: inertial=0 visual=0
+2026-06-30 14:55:13,255 INFO  UrdfExportService.cs: 600 - Link 'loc1': no inertial components, skipping mass computation
+2026-06-30 14:55:13,256 INFO  UrdfExportService.cs: 525 - Computing properties: 'motor_down' parent='base_link' originCS='<none>' jointCS='motor down cs' inertialPids=1 visualPids=1 collisionPids=0
+2026-06-30 14:55:13,256 INFO  UrdfExportService.cs: 1034 - Localized joint 'base_link_to_new_link' origin: xyz=(-0.0842193,0,-0.584206) rpy=(-1.5708,-0.408855,1.5708)
+2026-06-30 14:55:13,256 INFO  UrdfExportService.cs: 527 - Normalized joint 'base_link_to_new_link' axis to (0,0,1)
+2026-06-30 14:55:13,257 INFO  UrdfExportService.cs: 540 - Link 'motor_down' resolved components: inertial=1 visual=1
+2026-06-30 14:55:13,257 INFO  UrdfExportService.cs: 551 - Link 'motor_down': inertial 1 component(s) ? 1 leaf part(s)
+2026-06-30 14:55:13,257 INFO  UrdfExportService.cs: 556 - Link 'motor_down': computing inertial via coordSys='motor down cs'
+2026-06-30 14:55:13,360 INFO  MassPropertyService.cs: 283 - Computed inertial for link 'motor_down': mass=0.152023 kg com=(0.00530056,4.09885E-07,0.000335592) components=1
+2026-06-30 14:55:13,361 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'motor_down': RGBA(0.698039215686274, 0.698039215686274, 0.698039215686274, 1) Name: Custom_Materials|17-4_PH_H900
+2026-06-30 14:55:13,362 INFO  UrdfExportService.cs: 525 - Computing properties: 'motor_down_crank_roll' parent='motor_down' originCS='<none>' jointCS='crank motor down cs1' inertialPids=1 visualPids=1 collisionPids=0
+2026-06-30 14:55:13,362 INFO  UrdfExportService.cs: 1034 - Localized joint 'motor_down_crank_roll_joint' origin: xyz=(0.045,0,0.018) rpy=(0,0,0.408855)
+2026-06-30 14:55:13,362 INFO  UrdfExportService.cs: 527 - Normalized joint 'motor_down_crank_roll_joint' axis to (0,0,1)
+2026-06-30 14:55:13,363 INFO  UrdfExportService.cs: 540 - Link 'motor_down_crank_roll' resolved components: inertial=1 visual=1
+2026-06-30 14:55:13,363 INFO  UrdfExportService.cs: 551 - Link 'motor_down_crank_roll': inertial 1 component(s) ? 1 leaf part(s)
+2026-06-30 14:55:13,363 INFO  UrdfExportService.cs: 556 - Link 'motor_down_crank_roll': computing inertial via coordSys='crank motor down cs1'
+2026-06-30 14:55:13,445 INFO  MassPropertyService.cs: 283 - Computed inertial for link 'motor_down_crank_roll': mass=0.00867359 kg com=(-1.65714E-09,-3.00513E-10,-0.0012675) components=1
+2026-06-30 14:55:13,446 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'motor_down_crank_roll': RGBA(0.698039215686274, 0.698039215686274, 0.698039215686274, 1) Name: Custom_Materials|17-4_PH_H900
+2026-06-30 14:55:13,447 INFO  UrdfExportService.cs: 525 - Computing properties: 'motor_down_crank_yaw' parent='motor_down_crank_roll' originCS='<none>' jointCS='crank motor down cs2' inertialPids=2 visualPids=2 collisionPids=0
+2026-06-30 14:55:13,447 INFO  UrdfExportService.cs: 1034 - Localized joint 'motor_down_crank_yaw_joint' origin: xyz=(0,0,0) rpy=(1.57058,-0.0130931,1.58712)
+2026-06-30 14:55:13,447 INFO  UrdfExportService.cs: 527 - Normalized joint 'motor_down_crank_yaw_joint' axis to (0,0,1)
+2026-06-30 14:55:13,448 INFO  UrdfExportService.cs: 540 - Link 'motor_down_crank_yaw' resolved components: inertial=2 visual=2
+2026-06-30 14:55:13,448 INFO  UrdfExportService.cs: 551 - Link 'motor_down_crank_yaw': inertial 2 component(s) ? 2 leaf part(s)
+2026-06-30 14:55:13,448 INFO  UrdfExportService.cs: 556 - Link 'motor_down_crank_yaw': computing inertial via coordSys='crank motor down cs2'
+2026-06-30 14:55:13,573 INFO  MassPropertyService.cs: 283 - Computed inertial for link 'motor_down_crank_yaw': mass=0.331227 kg com=(0.101648,-0.00137403,-0.00166224) components=2
+2026-06-30 14:55:13,574 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'motor_down_crank_yaw': RGBA(0.647058823529412, 0.619607843137255, 0.588235294117647, 1) Name: SOLIDWORKS_Materials|AISI_304|1
+2026-06-30 14:55:13,575 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'motor_down_crank_yaw': RGBA(0.698039215686274, 0.698039215686274, 0.698039215686274, 1) Name: Custom_Materials|17-4_PH_H900
+2026-06-30 14:55:13,575 INFO  UrdfExportService.cs: 525 - Computing properties: 'crank_foot_down_roll' parent='motor_down_crank_yaw' originCS='<none>' jointCS='crank foot down cs1' inertialPids=1 visualPids=1 collisionPids=0
+2026-06-30 14:55:13,576 WARN  UrdfExportService.cs: 1008 - Joint 'crank_foot_down_roll_joint': backward CS detected (Z anti-aligned with displacement) but rotation axis is ˜Z — cannot auto-correct. Fix the SolidWorks coordinate system orientation.
+2026-06-30 14:55:13,576 INFO  UrdfExportService.cs: 1034 - Localized joint 'crank_foot_down_roll_joint' origin: xyz=(0.209955,-0.00278191,-0.00336558) rpy=(-0.0163162,-0.000213661,1.5577)
+2026-06-30 14:55:13,576 INFO  UrdfExportService.cs: 527 - Normalized joint 'crank_foot_down_roll_joint' axis to (0,0,1)
+2026-06-30 14:55:13,576 INFO  UrdfExportService.cs: 540 - Link 'crank_foot_down_roll' resolved components: inertial=1 visual=1
+2026-06-30 14:55:13,577 INFO  UrdfExportService.cs: 551 - Link 'crank_foot_down_roll': inertial 1 component(s) ? 1 leaf part(s)
+2026-06-30 14:55:13,577 INFO  UrdfExportService.cs: 556 - Link 'crank_foot_down_roll': computing inertial via coordSys='crank foot down cs1'
+2026-06-30 14:55:13,664 INFO  MassPropertyService.cs: 283 - Computed inertial for link 'crank_foot_down_roll': mass=0.00867359 kg com=(-8.94937E-13,-3.41938E-12,-0.0012675) components=1
+2026-06-30 14:55:13,665 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'crank_foot_down_roll': RGBA(0.698039215686274, 0.698039215686274, 0.698039215686274, 1) Name: Custom_Materials|17-4_PH_H900
+2026-06-30 14:55:13,666 INFO  UrdfExportService.cs: 525 - Computing properties: 'crank_foot_down_yaw' parent='crank_foot_down_roll' originCS='<none>' jointCS='crank foot down cs2' inertialPids=1 visualPids=1 collisionPids=0
+2026-06-30 14:55:13,666 INFO  UrdfExportService.cs: 1034 - Localized joint 'crank_foot_down_roll_to_new_link' origin: xyz=(0,0,0) rpy=(0,1.5708,0)
+2026-06-30 14:55:13,667 INFO  UrdfExportService.cs: 527 - Normalized joint 'crank_foot_down_roll_to_new_link' axis to (0,0,1)
+2026-06-30 14:55:13,667 INFO  UrdfExportService.cs: 540 - Link 'crank_foot_down_yaw' resolved components: inertial=1 visual=1
+2026-06-30 14:55:13,667 INFO  UrdfExportService.cs: 551 - Link 'crank_foot_down_yaw': inertial 1 component(s) ? 1 leaf part(s)
+2026-06-30 14:55:13,668 INFO  UrdfExportService.cs: 556 - Link 'crank_foot_down_yaw': computing inertial via coordSys='crank foot down cs2'
+2026-06-30 14:55:13,767 INFO  MassPropertyService.cs: 283 - Computed inertial for link 'crank_foot_down_yaw': mass=0.0105025 kg com=(1.85268E-15,1.84297E-14,1.40901E-13) components=1
+2026-06-30 14:55:13,768 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'crank_foot_down_yaw': RGBA(0.647058823529412, 0.619607843137255, 0.588235294117647, 1) Name: SOLIDWORKS_Materials|AISI_304|1
+2026-06-30 14:55:13,769 INFO  UrdfExportService.cs: 525 - Computing properties: 'loc2' parent='crank_foot_down_yaw' originCS='<none>' jointCS='crank foot down cs2' inertialPids=0 visualPids=0 collisionPids=0
+2026-06-30 14:55:13,769 INFO  UrdfExportService.cs: 1034 - Localized joint 'lo2_j' origin: xyz=(0,0,0) rpy=(0,0,0)
+2026-06-30 14:55:13,769 INFO  UrdfExportService.cs: 540 - Link 'loc2' resolved components: inertial=0 visual=0
+2026-06-30 14:55:13,769 INFO  UrdfExportService.cs: 600 - Link 'loc2': no inertial components, skipping mass computation
+2026-06-30 14:55:13,770 INFO  UrdfExportService.cs: 525 - Computing properties: 'pitch' parent='base_link' originCS='<none>' jointCS='pitch cs' inertialPids=3 visualPids=3 collisionPids=0
+2026-06-30 14:55:13,770 WARN  UrdfExportService.cs: 1008 - Joint 'pitch_joint': backward CS detected (Z anti-aligned with displacement) but rotation axis is ˜Z — cannot auto-correct. Fix the SolidWorks coordinate system orientation.
+2026-06-30 14:55:13,770 INFO  UrdfExportService.cs: 1034 - Localized joint 'pitch_joint' origin: xyz=(-0.0361858,0,-0.794206) rpy=(1.5708,0,-3.14159)
+2026-06-30 14:55:13,771 INFO  UrdfExportService.cs: 527 - Normalized joint 'pitch_joint' axis to (0,0,1)
+2026-06-30 14:55:13,771 INFO  UrdfExportService.cs: 540 - Link 'pitch' resolved components: inertial=3 visual=3
+2026-06-30 14:55:13,771 INFO  UrdfExportService.cs: 551 - Link 'pitch': inertial 3 component(s) ? 3 leaf part(s)
+2026-06-30 14:55:13,772 INFO  UrdfExportService.cs: 556 - Link 'pitch': computing inertial via coordSys='pitch cs'
+2026-06-30 14:55:13,938 INFO  MassPropertyService.cs: 283 - Computed inertial for link 'pitch': mass=0.274517 kg com=(1.7665E-08,-4.60783E-08,-1.23885E-08) components=3
+2026-06-30 14:55:13,939 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'pitch': RGBA(0.647058823529412, 0.619607843137255, 0.588235294117647, 1) Name: SOLIDWORKS_Materials|AISI_304|1
+2026-06-30 14:55:13,940 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'pitch': RGBA(0.647058823529412, 0.619607843137255, 0.588235294117647, 1) Name: SOLIDWORKS_Materials|AISI_304|1
+2026-06-30 14:55:13,940 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'pitch': RGBA(0.698039215686274, 0.698039215686274, 0.698039215686274, 1) Name: Custom_Materials|17-4_PH_H900
+2026-06-30 14:55:13,940 INFO  UrdfExportService.cs: 525 - Computing properties: 'roll' parent='pitch' originCS='<none>' jointCS='roll cs' inertialPids=3 visualPids=3 collisionPids=0
+2026-06-30 14:55:13,941 INFO  UrdfExportService.cs: 1034 - Localized joint 'roll_joint' origin: xyz=(0,0,0) rpy=(-1.5708,0,-1.5708)
+2026-06-30 14:55:13,941 INFO  UrdfExportService.cs: 527 - Normalized joint 'roll_joint' axis to (0,0,1)
+2026-06-30 14:55:13,941 INFO  UrdfExportService.cs: 540 - Link 'roll' resolved components: inertial=3 visual=3
+2026-06-30 14:55:13,942 INFO  UrdfExportService.cs: 551 - Link 'roll': inertial 3 component(s) ? 3 leaf part(s)
+2026-06-30 14:55:13,942 INFO  UrdfExportService.cs: 556 - Link 'roll': computing inertial via coordSys='roll cs'
+2026-06-30 14:55:14,270 INFO  MassPropertyService.cs: 283 - Computed inertial for link 'roll': mass=1.24596 kg com=(0.0299377,3.40943E-07,-0.0166431) components=3
+2026-06-30 14:55:14,271 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'roll': RGBA(0.898039215686275, 0.917647058823529, 0.929411764705882, 1) Name: SOLIDWORKS_Materials|6061-T6_(SS)|164
+2026-06-30 14:55:14,272 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'roll': RGBA(0.898039215686275, 0.917647058823529, 0.929411764705882, 1) Name: SOLIDWORKS_Materials|6061-T6_(SS)|164
+2026-06-30 14:55:14,272 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'roll': RGBA(0.298039215686275, 0.298039215686275, 0.298039215686275, 1) Name: SOLIDWORKS_Materials|Rubber|79
+2026-06-30 14:55:14,272 INFO  UrdfExportService.cs: 525 - Computing properties: 'loc1_' parent='roll' originCS='<none>' jointCS='crank foot up cs2' inertialPids=0 visualPids=0 collisionPids=0
+2026-06-30 14:55:14,273 INFO  UrdfExportService.cs: 1034 - Localized joint 'loc1_joint_' origin: xyz=(-0.018,0.0345,0.066) rpy=(0,0,-1.5708)
+2026-06-30 14:55:14,273 INFO  UrdfExportService.cs: 540 - Link 'loc1_' resolved components: inertial=0 visual=0
+2026-06-30 14:55:14,273 INFO  UrdfExportService.cs: 600 - Link 'loc1_': no inertial components, skipping mass computation
+2026-06-30 14:55:14,274 INFO  UrdfExportService.cs: 525 - Computing properties: 'loc2_' parent='roll' originCS='<none>' jointCS='crank foot down cs2' inertialPids=0 visualPids=0 collisionPids=0
+2026-06-30 14:55:14,275 INFO  UrdfExportService.cs: 1034 - Localized joint 'loc2_joint_' origin: xyz=(-0.018,-0.0345,0.066) rpy=(0,0,1.5708)
+2026-06-30 14:55:14,275 INFO  UrdfExportService.cs: 540 - Link 'loc2_' resolved components: inertial=0 visual=0
+2026-06-30 14:55:14,275 INFO  UrdfExportService.cs: 600 - Link 'loc2_': no inertial components, skipping mass computation
+2026-06-30 14:55:14,276 INFO  MassPropertyService.cs: 494 - MassPropertyService: scope closed
+2026-06-30 14:55:14,276 INFO  UrdfExportService.cs: 352 - Pass 2: hiding all components for STL export
+2026-06-30 14:55:14,786 INFO  UrdfExportService.cs: 354 - Pass 2: exporting STL meshes per link
+2026-06-30 14:55:14,816 INFO  UrdfExportService.cs: 827 - Link 'base_link': exporting 4 visual mesh(es) to 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes'
+2026-06-30 14:55:14,817 INFO  StlExportService.cs: 134 - Set coordinate system for STL export: 'base part', fineMesh=False
+2026-06-30 14:55:14,818 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\base_link\component_0_21_21.stl' componentCount=1
+2026-06-30 14:55:14,819 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 2 components total
+2026-06-30 14:55:15,899 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\base_link\component_0_21_21.stl
+2026-06-30 14:55:15,900 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\base_link\component_0_21_21.stl type=3
+2026-06-30 14:55:16,091 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_0_21_21.STL' ? 'component_0_21_21.stl'
+2026-06-30 14:55:16,091 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\base_link\component_0_21_21.stl' (warnings=0)
+2026-06-30 14:55:16,297 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\base_link\component_1_21_85.stl' componentCount=1
+2026-06-30 14:55:16,298 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 2 components total
+2026-06-30 14:55:16,789 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\base_link\component_1_21_85.stl
+2026-06-30 14:55:16,789 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\base_link\component_1_21_85.stl type=3
+2026-06-30 14:55:16,970 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_1_21_85.STL' ? 'component_1_21_85.stl'
+2026-06-30 14:55:16,971 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\base_link\component_1_21_85.stl' (warnings=0)
+2026-06-30 14:55:17,017 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\base_link\component_2_21_30.stl' componentCount=1
+2026-06-30 14:55:17,018 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 2 components total
+2026-06-30 14:55:17,499 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\base_link\component_2_21_30.stl
+2026-06-30 14:55:17,499 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\base_link\component_2_21_30.stl type=3
+2026-06-30 14:55:17,688 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_2_21_30.STL' ? 'component_2_21_30.stl'
+2026-06-30 14:55:17,688 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\base_link\component_2_21_30.stl' (warnings=0)
+2026-06-30 14:55:17,736 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\base_link\component_3_21_31.stl' componentCount=1
+2026-06-30 14:55:17,737 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 2 components total
+2026-06-30 14:55:18,183 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\base_link\component_3_21_31.stl
+2026-06-30 14:55:18,183 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\base_link\component_3_21_31.stl type=3
+2026-06-30 14:55:18,351 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_3_21_31.STL' ? 'component_3_21_31.stl'
+2026-06-30 14:55:18,351 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\base_link\component_3_21_31.stl' (warnings=0)
+2026-06-30 14:55:18,387 INFO  UrdfExportService.cs: 827 - Link 'motor_up': exporting 1 visual mesh(es) to 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes'
+2026-06-30 14:55:18,388 INFO  StlExportService.cs: 134 - Set coordinate system for STL export: 'motor up cs', fineMesh=False
+2026-06-30 14:55:18,390 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_up\component_0_21_22.stl' componentCount=1
+2026-06-30 14:55:18,390 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 2 components total
+2026-06-30 14:55:18,899 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_up\component_0_21_22.stl
+2026-06-30 14:55:18,900 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_up\component_0_21_22.stl type=3
+2026-06-30 14:55:19,093 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_0_21_22.STL' ? 'component_0_21_22.stl'
+2026-06-30 14:55:19,093 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_up\component_0_21_22.stl' (warnings=0)
+2026-06-30 14:55:19,134 INFO  UrdfExportService.cs: 827 - Link 'motor_up_crank_roll': exporting 1 visual mesh(es) to 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes'
+2026-06-30 14:55:19,135 INFO  StlExportService.cs: 134 - Set coordinate system for STL export: 'crank motor up cs1', fineMesh=False
+2026-06-30 14:55:19,137 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_up_crank_roll\component_0_21_114.stl' componentCount=1
+2026-06-30 14:55:19,137 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 2 components total
+2026-06-30 14:55:19,578 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_up_crank_roll\component_0_21_114.stl
+2026-06-30 14:55:19,578 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_up_crank_roll\component_0_21_114.stl type=3
+2026-06-30 14:55:19,768 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_0_21_114.STL' ? 'component_0_21_114.stl'
+2026-06-30 14:55:19,769 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_up_crank_roll\component_0_21_114.stl' (warnings=0)
+2026-06-30 14:55:19,804 INFO  UrdfExportService.cs: 827 - Link 'motor_up_crank_yaw': exporting 2 visual mesh(es) to 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes'
+2026-06-30 14:55:19,805 INFO  StlExportService.cs: 134 - Set coordinate system for STL export: 'crank motor up cs2', fineMesh=False
+2026-06-30 14:55:19,809 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_up_crank_yaw\component_0_21_28_22.stl' componentCount=1
+2026-06-30 14:55:19,810 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 3 components total
+2026-06-30 14:55:20,620 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_up_crank_yaw\component_0_21_28_22.stl
+2026-06-30 14:55:20,621 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_up_crank_yaw\component_0_21_28_22.stl type=3
+2026-06-30 14:55:21,144 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_0_21_28_22.STL' ? 'component_0_21_28_22.stl'
+2026-06-30 14:55:21,145 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_up_crank_yaw\component_0_21_28_22.stl' (warnings=0)
+2026-06-30 14:55:21,211 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_up_crank_yaw\component_1_21_24.stl' componentCount=1
+2026-06-30 14:55:21,212 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 2 components total
+2026-06-30 14:55:21,800 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_up_crank_yaw\component_1_21_24.stl
+2026-06-30 14:55:21,800 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_up_crank_yaw\component_1_21_24.stl type=3
+2026-06-30 14:55:21,975 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_1_21_24.STL' ? 'component_1_21_24.stl'
+2026-06-30 14:55:21,976 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_up_crank_yaw\component_1_21_24.stl' (warnings=0)
+2026-06-30 14:55:22,009 INFO  UrdfExportService.cs: 827 - Link 'crank_foot_up_roll': exporting 1 visual mesh(es) to 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes'
+2026-06-30 14:55:22,010 INFO  StlExportService.cs: 134 - Set coordinate system for STL export: 'crank foot up cs1', fineMesh=False
+2026-06-30 14:55:22,012 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\crank_foot_up_roll\component_0_21_118.stl' componentCount=1
+2026-06-30 14:55:22,013 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 2 components total
+2026-06-30 14:55:22,492 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\crank_foot_up_roll\component_0_21_118.stl
+2026-06-30 14:55:22,493 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\crank_foot_up_roll\component_0_21_118.stl type=3
+2026-06-30 14:55:22,701 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_0_21_118.STL' ? 'component_0_21_118.stl'
+2026-06-30 14:55:22,702 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\crank_foot_up_roll\component_0_21_118.stl' (warnings=0)
+2026-06-30 14:55:22,739 INFO  UrdfExportService.cs: 827 - Link 'crank_foot_up_yaw': exporting 1 visual mesh(es) to 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes'
+2026-06-30 14:55:22,740 INFO  StlExportService.cs: 134 - Set coordinate system for STL export: 'crank foot up cs2', fineMesh=False
+2026-06-30 14:55:22,743 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\crank_foot_up_yaw\component_0_21_27_22.stl' componentCount=1
+2026-06-30 14:55:22,744 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 3 components total
+2026-06-30 14:55:23,539 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\crank_foot_up_yaw\component_0_21_27_22.stl
+2026-06-30 14:55:23,540 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\crank_foot_up_yaw\component_0_21_27_22.stl type=3
+2026-06-30 14:55:24,054 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_0_21_27_22.STL' ? 'component_0_21_27_22.stl'
+2026-06-30 14:55:24,055 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\crank_foot_up_yaw\component_0_21_27_22.stl' (warnings=0)
+2026-06-30 14:55:24,118 INFO  UrdfExportService.cs: 876 - Link 'loc1': no visual components, skipping STL export
+2026-06-30 14:55:24,120 INFO  UrdfExportService.cs: 827 - Link 'motor_down': exporting 1 visual mesh(es) to 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes'
+2026-06-30 14:55:24,121 INFO  StlExportService.cs: 134 - Set coordinate system for STL export: 'motor down cs', fineMesh=False
+2026-06-30 14:55:24,124 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_down\component_0_21_23.stl' componentCount=1
+2026-06-30 14:55:24,124 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 2 components total
+2026-06-30 14:55:24,725 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_down\component_0_21_23.stl
+2026-06-30 14:55:24,725 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_down\component_0_21_23.stl type=3
+2026-06-30 14:55:24,932 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_0_21_23.STL' ? 'component_0_21_23.stl'
+2026-06-30 14:55:24,933 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_down\component_0_21_23.stl' (warnings=0)
+2026-06-30 14:55:24,973 INFO  UrdfExportService.cs: 827 - Link 'motor_down_crank_roll': exporting 1 visual mesh(es) to 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes'
+2026-06-30 14:55:24,974 INFO  StlExportService.cs: 134 - Set coordinate system for STL export: 'crank motor down cs1', fineMesh=False
+2026-06-30 14:55:24,980 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_down_crank_roll\component_0_21_111.stl' componentCount=1
+2026-06-30 14:55:24,980 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 2 components total
+2026-06-30 14:55:25,417 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_down_crank_roll\component_0_21_111.stl
+2026-06-30 14:55:25,417 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_down_crank_roll\component_0_21_111.stl type=3
+2026-06-30 14:55:25,618 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_0_21_111.STL' ? 'component_0_21_111.stl'
+2026-06-30 14:55:25,618 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_down_crank_roll\component_0_21_111.stl' (warnings=0)
+2026-06-30 14:55:25,655 INFO  UrdfExportService.cs: 827 - Link 'motor_down_crank_yaw': exporting 2 visual mesh(es) to 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes'
+2026-06-30 14:55:25,656 INFO  StlExportService.cs: 134 - Set coordinate system for STL export: 'crank motor down cs2', fineMesh=False
+2026-06-30 14:55:25,658 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_down_crank_yaw\component_0_21_26_22.stl' componentCount=1
+2026-06-30 14:55:25,658 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 3 components total
+2026-06-30 14:55:26,446 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_down_crank_yaw\component_0_21_26_22.stl
+2026-06-30 14:55:26,447 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_down_crank_yaw\component_0_21_26_22.stl type=3
+2026-06-30 14:55:26,940 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_0_21_26_22.STL' ? 'component_0_21_26_22.stl'
+2026-06-30 14:55:26,941 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_down_crank_yaw\component_0_21_26_22.stl' (warnings=0)
+2026-06-30 14:55:26,991 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_down_crank_yaw\component_1_21_25.stl' componentCount=1
+2026-06-30 14:55:26,991 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 2 components total
+2026-06-30 14:55:27,588 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_down_crank_yaw\component_1_21_25.stl
+2026-06-30 14:55:27,589 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_down_crank_yaw\component_1_21_25.stl type=3
+2026-06-30 14:55:27,776 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_1_21_25.STL' ? 'component_1_21_25.stl'
+2026-06-30 14:55:27,777 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\motor_down_crank_yaw\component_1_21_25.stl' (warnings=0)
+2026-06-30 14:55:27,815 INFO  UrdfExportService.cs: 827 - Link 'crank_foot_down_roll': exporting 1 visual mesh(es) to 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes'
+2026-06-30 14:55:27,816 INFO  StlExportService.cs: 134 - Set coordinate system for STL export: 'crank foot down cs1', fineMesh=False
+2026-06-30 14:55:27,818 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\crank_foot_down_roll\component_0_21_119.stl' componentCount=1
+2026-06-30 14:55:27,819 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 2 components total
+2026-06-30 14:55:28,290 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\crank_foot_down_roll\component_0_21_119.stl
+2026-06-30 14:55:28,291 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\crank_foot_down_roll\component_0_21_119.stl type=3
+2026-06-30 14:55:28,470 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_0_21_119.STL' ? 'component_0_21_119.stl'
+2026-06-30 14:55:28,471 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\crank_foot_down_roll\component_0_21_119.stl' (warnings=0)
+2026-06-30 14:55:28,505 INFO  UrdfExportService.cs: 827 - Link 'crank_foot_down_yaw': exporting 1 visual mesh(es) to 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes'
+2026-06-30 14:55:28,507 INFO  StlExportService.cs: 134 - Set coordinate system for STL export: 'crank foot down cs2', fineMesh=False
+2026-06-30 14:55:28,509 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\crank_foot_down_yaw\component_0_21_29_22.stl' componentCount=1
+2026-06-30 14:55:28,509 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 3 components total
+2026-06-30 14:55:29,270 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\crank_foot_down_yaw\component_0_21_29_22.stl
+2026-06-30 14:55:29,271 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\crank_foot_down_yaw\component_0_21_29_22.stl type=3
+2026-06-30 14:55:29,793 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_0_21_29_22.STL' ? 'component_0_21_29_22.stl'
+2026-06-30 14:55:29,794 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\crank_foot_down_yaw\component_0_21_29_22.stl' (warnings=0)
+2026-06-30 14:55:29,856 INFO  UrdfExportService.cs: 876 - Link 'loc2': no visual components, skipping STL export
+2026-06-30 14:55:29,858 INFO  UrdfExportService.cs: 827 - Link 'pitch': exporting 3 visual mesh(es) to 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes'
+2026-06-30 14:55:29,858 INFO  StlExportService.cs: 134 - Set coordinate system for STL export: 'pitch cs', fineMesh=False
+2026-06-30 14:55:29,860 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\pitch\component_0_21_33.stl' componentCount=1
+2026-06-30 14:55:29,860 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 2 components total
+2026-06-30 14:55:30,753 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\pitch\component_0_21_33.stl
+2026-06-30 14:55:30,754 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\pitch\component_0_21_33.stl type=3
+2026-06-30 14:55:31,224 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_0_21_33.STL' ? 'component_0_21_33.stl'
+2026-06-30 14:55:31,225 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\pitch\component_0_21_33.stl' (warnings=0)
+2026-06-30 14:55:31,287 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\pitch\component_1_21_36.stl' componentCount=1
+2026-06-30 14:55:31,288 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 2 components total
+2026-06-30 14:55:32,225 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\pitch\component_1_21_36.stl
+2026-06-30 14:55:32,225 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\pitch\component_1_21_36.stl type=3
+2026-06-30 14:55:32,717 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_1_21_36.STL' ? 'component_1_21_36.stl'
+2026-06-30 14:55:32,718 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\pitch\component_1_21_36.stl' (warnings=0)
+2026-06-30 14:55:32,782 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\pitch\component_2_21_138.stl' componentCount=1
+2026-06-30 14:55:32,783 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 2 components total
+2026-06-30 14:55:33,377 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\pitch\component_2_21_138.stl
+2026-06-30 14:55:33,378 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\pitch\component_2_21_138.stl type=3
+2026-06-30 14:55:33,557 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_2_21_138.STL' ? 'component_2_21_138.stl'
+2026-06-30 14:55:33,558 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\pitch\component_2_21_138.stl' (warnings=0)
+2026-06-30 14:55:33,588 INFO  UrdfExportService.cs: 827 - Link 'roll': exporting 3 visual mesh(es) to 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes'
+2026-06-30 14:55:33,589 INFO  StlExportService.cs: 134 - Set coordinate system for STL export: 'roll cs', fineMesh=False
+2026-06-30 14:55:33,591 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\roll\component_0_21_34.stl' componentCount=1
+2026-06-30 14:55:33,592 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 2 components total
+2026-06-30 14:55:34,072 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\roll\component_0_21_34.stl
+2026-06-30 14:55:34,073 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\roll\component_0_21_34.stl type=3
+2026-06-30 14:55:34,257 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_0_21_34.STL' ? 'component_0_21_34.stl'
+2026-06-30 14:55:34,258 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\roll\component_0_21_34.stl' (warnings=0)
+2026-06-30 14:55:34,302 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\roll\component_1_21_32.stl' componentCount=1
+2026-06-30 14:55:34,303 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 2 components total
+2026-06-30 14:55:34,943 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\roll\component_1_21_32.stl
+2026-06-30 14:55:34,943 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\roll\component_1_21_32.stl type=3
+2026-06-30 14:55:35,117 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_1_21_32.STL' ? 'component_1_21_32.stl'
+2026-06-30 14:55:35,117 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\roll\component_1_21_32.stl' (warnings=0)
+2026-06-30 14:55:35,160 INFO  StlExportService.cs: 146 - ExportStl: target='C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\roll\component_2_21_207_23.stl' componentCount=1
+2026-06-30 14:55:35,161 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 3 components total
+2026-06-30 14:55:35,730 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\roll\component_2_21_207_23.stl
+2026-06-30 14:55:35,730 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\roll\component_2_21_207_23.stl type=3
+2026-06-30 14:55:35,930 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_2_21_207_23.STL' ? 'component_2_21_207_23.stl'
+2026-06-30 14:55:35,931 INFO  StlExportService.cs: 210 - Exported STL to: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\meshes\roll\component_2_21_207_23.stl' (warnings=0)
+2026-06-30 14:55:35,984 INFO  UrdfExportService.cs: 876 - Link 'loc1_': no visual components, skipping STL export
+2026-06-30 14:55:35,987 INFO  UrdfExportService.cs: 876 - Link 'loc2_': no visual components, skipping STL export
+2026-06-30 14:55:35,990 INFO  UrdfExportService.cs: 372 - URDF written to C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\urdf\robot.urdf
+2026-06-30 14:55:35,991 INFO  UrdfExportService.cs: 1297 - Wrote metadata sidecar: 'C:\Users\saharl\Documents\V3.5\closed_loop_test\leg_urdf\robot\robot_metadata.json'
+2026-06-30 14:55:36,925 INFO  UrdfExportService.cs: 128 - Restored original STL export preferences
+2026-06-30 14:55:38,190 INFO  UrdfExportService.cs: 128 - Export completed

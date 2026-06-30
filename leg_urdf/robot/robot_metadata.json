@@ -1,0 +1,124 @@
+{
+  "schema_version": 2,
+  "links": [
+    {
+      "name": "base_link",
+      "inertial_component_count": 4,
+      "visual_component_count": 4,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    },
+    {
+      "name": "motor_up",
+      "inertial_component_count": 1,
+      "visual_component_count": 1,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    },
+    {
+      "name": "motor_up_crank_roll",
+      "inertial_component_count": 1,
+      "visual_component_count": 1,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    },
+    {
+      "name": "motor_up_crank_yaw",
+      "inertial_component_count": 2,
+      "visual_component_count": 2,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    },
+    {
+      "name": "crank_foot_up_roll",
+      "inertial_component_count": 1,
+      "visual_component_count": 1,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    },
+    {
+      "name": "crank_foot_up_yaw",
+      "inertial_component_count": 1,
+      "visual_component_count": 1,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    },
+    {
+      "name": "loc1",
+      "inertial_component_count": 0,
+      "visual_component_count": 0,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    },
+    {
+      "name": "motor_down",
+      "inertial_component_count": 1,
+      "visual_component_count": 1,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    },
+    {
+      "name": "motor_down_crank_roll",
+      "inertial_component_count": 1,
+      "visual_component_count": 1,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    },
+    {
+      "name": "motor_down_crank_yaw",
+      "inertial_component_count": 2,
+      "visual_component_count": 2,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    },
+    {
+      "name": "crank_foot_down_roll",
+      "inertial_component_count": 1,
+      "visual_component_count": 1,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    },
+    {
+      "name": "crank_foot_down_yaw",
+      "inertial_component_count": 1,
+      "visual_component_count": 1,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    },
+    {
+      "name": "loc2",
+      "inertial_component_count": 0,
+      "visual_component_count": 0,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    },
+    {
+      "name": "pitch",
+      "inertial_component_count": 3,
+      "visual_component_count": 3,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    },
+    {
+      "name": "roll",
+      "inertial_component_count": 3,
+      "visual_component_count": 3,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    },
+    {
+      "name": "loc1_",
+      "inertial_component_count": 0,
+      "visual_component_count": 0,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    },
+    {
+      "name": "loc2_",
+      "inertial_component_count": 0,
+      "visual_component_count": 0,
+      "collision_component_count": 0,
+      "collision_fit_failures": []
+    }
+  ]
+}

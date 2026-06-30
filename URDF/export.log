@@ -1,0 +1,93 @@
+2026-06-30 11:46:38,707 INFO  UrdfExportService.cs: 128 - Starting URDF export: sourceAssembly='C:\Users\saharl\Documents\V3.5\closed loop test\solid\assem.SLDASM' outputDir='G:\Shared drives\shared drive\URDFs\robot' exportStl=True
+2026-06-30 11:46:38,713 INFO  UrdfExportService.cs: 147 - Export tree contains 6 link(s); root='base_link'
+2026-06-30 11:46:38,720 INFO  UrdfExportService.cs: 172 - Mesh output directory: 'G:\Shared drives\shared drive\URDFs\robot\meshes'
+2026-06-30 11:46:38,724 INFO  UrdfExportService.cs: 173 - Found 0 hidden components
+2026-06-30 11:46:38,727 INFO  UrdfExportService.cs: 179 - Saved current STL export preferences
+2026-06-30 11:46:38,730 INFO  UrdfExportService.cs: 179 - Set STL export preferences for URDF export
+2026-06-30 11:46:38,735 INFO  SolidWorksService.cs: 640 - ResolveAllLightWeightComponents returned 0
+2026-06-30 11:46:38,742 INFO  SolidWorksService.cs: 808 - ReadWholeAssemblyMass: whole-assembly mass = 0.0509646 kg
+2026-06-30 11:46:38,746 INFO  UrdfExportService.cs: 249 - EnsureFullyRebuilt: doc already fully rebuilt
+2026-06-30 11:46:38,749 INFO  SolidWorksService.cs: 808 - ReadWholeAssemblyMass: whole-assembly mass = 0.0509646 kg
+2026-06-30 11:46:38,751 INFO  UrdfExportService.cs: 250 - Tier 0 warm-up mass pre-rebuild=0.0509646 kg post-rebuild=0.0509646 kg
+2026-06-30 11:46:38,754 INFO  UrdfExportService.cs: 304 - Pass 1: computing link properties (inertials, joints, materials)
+2026-06-30 11:46:38,759 INFO  MassPropertyService.cs: 78 - MassPropertyService: scope opened — MassProperty2 will be reused across links
+2026-06-30 11:46:38,764 INFO  UrdfExportService.cs: 525 - Computing properties: 'base_link' parent='<root>' originCS='base' jointCS='<none>' inertialPids=1 visualPids=1 collisionPids=0
+2026-06-30 11:46:38,767 INFO  UrdfExportService.cs: 540 - Link 'base_link' resolved components: inertial=1 visual=1
+2026-06-30 11:46:38,773 INFO  UrdfExportService.cs: 551 - Link 'base_link': inertial 1 component(s) ? 1 leaf part(s)
+2026-06-30 11:46:38,774 INFO  UrdfExportService.cs: 556 - Link 'base_link': computing inertial via coordSys='base'
+2026-06-30 11:46:38,792 INFO  MassPropertyService.cs: 283 - Computed inertial for link 'base_link': mass=0.0110537 kg com=(5.43589E-18,0.0025,2.99333E-19) components=1
+2026-06-30 11:46:38,797 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'base_link': RGBA(0.792156862745098, 0.819607843137255, 0.933333333333333, 1) Name: Steel
+2026-06-30 11:46:38,801 INFO  UrdfExportService.cs: 525 - Computing properties: 'link1' parent='base_link' originCS='<none>' jointCS='link_1' inertialPids=1 visualPids=1 collisionPids=0
+2026-06-30 11:46:38,837 INFO  UrdfExportService.cs: 1034 - Localized joint 'joint_1' origin: xyz=(0.07,0,0) rpy=(1.5708,-1.5708,0)
+2026-06-30 11:46:38,840 INFO  UrdfExportService.cs: 527 - Normalized joint 'joint_1' axis to (0,0,1)
+2026-06-30 11:46:38,842 INFO  UrdfExportService.cs: 540 - Link 'link1' resolved components: inertial=1 visual=1
+2026-06-30 11:46:38,845 INFO  UrdfExportService.cs: 551 - Link 'link1': inertial 1 component(s) ? 1 leaf part(s)
+2026-06-30 11:46:38,847 INFO  UrdfExportService.cs: 556 - Link 'link1': computing inertial via coordSys='link_1'
+2026-06-30 11:46:38,866 INFO  MassPropertyService.cs: 283 - Computed inertial for link 'link1': mass=0.0110537 kg com=(0.07,2.77556E-17,0.0035) components=1
+2026-06-30 11:46:38,868 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'link1': RGBA(0.792156862745098, 0.819607843137255, 0.933333333333333, 1) Name: Steel
+2026-06-30 11:46:38,870 INFO  UrdfExportService.cs: 525 - Computing properties: 'link_2' parent='link1' originCS='<none>' jointCS='link_2' inertialPids=1 visualPids=1 collisionPids=0
+2026-06-30 11:46:38,873 INFO  UrdfExportService.cs: 1034 - Localized joint 'joint_2' origin: xyz=(0.14,0,0.001) rpy=(0,0,1.5708)
+2026-06-30 11:46:38,876 INFO  UrdfExportService.cs: 527 - Normalized joint 'joint_2' axis to (0,0,1)
+2026-06-30 11:46:38,878 INFO  UrdfExportService.cs: 540 - Link 'link_2' resolved components: inertial=1 visual=1
+2026-06-30 11:46:38,880 INFO  UrdfExportService.cs: 551 - Link 'link_2': inertial 1 component(s) ? 1 leaf part(s)
+2026-06-30 11:46:38,883 INFO  UrdfExportService.cs: 556 - Link 'link_2': computing inertial via coordSys='link_2'
+2026-06-30 11:46:38,900 INFO  MassPropertyService.cs: 283 - Computed inertial for link 'link_2': mass=0.0155537 kg com=(0.0995278,-0.00970639,-0.0035) components=1
+2026-06-30 11:46:38,903 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'link_2': RGBA(0.792156862745098, 0.819607843137255, 0.933333333333333, 1) Name: Steel
+2026-06-30 11:46:38,906 INFO  UrdfExportService.cs: 525 - Computing properties: 'link_3' parent='link_2' originCS='<none>' jointCS='link_3' inertialPids=1 visualPids=1 collisionPids=0
+2026-06-30 11:46:38,908 WARN  UrdfExportService.cs: 1008 - Joint 'joint_3': backward CS detected (Z anti-aligned with displacement) but rotation axis is ˜Z — cannot auto-correct. Fix the SolidWorks coordinate system orientation.
+2026-06-30 11:46:38,912 INFO  UrdfExportService.cs: 1034 - Localized joint 'joint_3' origin: xyz=(0.199056,-0.0194128,-0.001) rpy=(0,0,1.47358)
+2026-06-30 11:46:38,914 INFO  UrdfExportService.cs: 527 - Normalized joint 'joint_3' axis to (0,0,1)
+2026-06-30 11:46:38,917 INFO  UrdfExportService.cs: 540 - Link 'link_3' resolved components: inertial=1 visual=1
+2026-06-30 11:46:38,919 INFO  UrdfExportService.cs: 551 - Link 'link_3': inertial 1 component(s) ? 1 leaf part(s)
+2026-06-30 11:46:38,929 INFO  UrdfExportService.cs: 556 - Link 'link_3': computing inertial via coordSys='link_3'
+2026-06-30 11:46:38,946 INFO  MassPropertyService.cs: 283 - Computed inertial for link 'link_3': mass=0.0133037 kg com=(0.0764639,0.037125,0.0035) components=1
+2026-06-30 11:46:38,948 INFO  MaterialService.cs: 45 - Retrieved material color for component in link 'link_3': RGBA(0.792156862745098, 0.819607843137255, 0.933333333333333, 1) Name: Steel
+2026-06-30 11:46:38,951 INFO  UrdfExportService.cs: 525 - Computing properties: 'link_4' parent='link_3' originCS='<none>' jointCS='link_4' inertialPids=0 visualPids=0 collisionPids=0
+2026-06-30 11:46:38,953 INFO  UrdfExportService.cs: 1034 - Localized joint 'joint_4' origin: xyz=(0.152928,0.07425,0.001) rpy=(0,0,2.0228)
+2026-06-30 11:46:38,958 INFO  UrdfExportService.cs: 540 - Link 'link_4' resolved components: inertial=0 visual=0
+2026-06-30 11:46:38,962 INFO  UrdfExportService.cs: 600 - Link 'link_4': no inertial components, skipping mass computation
+2026-06-30 11:46:38,964 INFO  UrdfExportService.cs: 525 - Computing properties: 'link_4_' parent='base_link' originCS='<none>' jointCS='link_4' inertialPids=0 visualPids=0 collisionPids=0
+2026-06-30 11:46:38,966 INFO  UrdfExportService.cs: 1034 - Localized joint 'joint_4_' origin: xyz=(-0.07,-0.001,0) rpy=(1.5708,-0.354782,0)
+2026-06-30 11:46:38,970 INFO  UrdfExportService.cs: 540 - Link 'link_4_' resolved components: inertial=0 visual=0
+2026-06-30 11:46:38,972 INFO  UrdfExportService.cs: 600 - Link 'link_4_': no inertial components, skipping mass computation
+2026-06-30 11:46:38,975 INFO  MassPropertyService.cs: 494 - MassPropertyService: scope closed
+2026-06-30 11:46:38,979 INFO  UrdfExportService.cs: 352 - Pass 2: hiding all components for STL export
+2026-06-30 11:46:39,018 INFO  UrdfExportService.cs: 354 - Pass 2: exporting STL meshes per link
+2026-06-30 11:46:39,040 INFO  UrdfExportService.cs: 827 - Link 'base_link': exporting 1 visual mesh(es) to 'G:\Shared drives\shared drive\URDFs\robot\meshes'
+2026-06-30 11:46:39,045 INFO  StlExportService.cs: 134 - Set coordinate system for STL export: 'base', fineMesh=False
+2026-06-30 11:46:39,056 INFO  StlExportService.cs: 146 - ExportStl: target='G:\Shared drives\shared drive\URDFs\robot\meshes\base_link\component_0_21.stl' componentCount=1
+2026-06-30 11:46:39,060 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 1 components total
+2026-06-30 11:46:39,111 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=G:\Shared drives\shared drive\URDFs\robot\meshes\base_link\component_0_21.stl
+2026-06-30 11:46:39,113 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: G:\Shared drives\shared drive\URDFs\robot\meshes\base_link\component_0_21.stl type=3
+2026-06-30 11:46:39,136 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_0_21.STL' ? 'component_0_21.stl'
+2026-06-30 11:46:39,141 INFO  StlExportService.cs: 210 - Exported STL to: 'G:\Shared drives\shared drive\URDFs\robot\meshes\base_link\component_0_21.stl' (warnings=0)
+2026-06-30 11:46:39,159 INFO  UrdfExportService.cs: 827 - Link 'link1': exporting 1 visual mesh(es) to 'G:\Shared drives\shared drive\URDFs\robot\meshes'
+2026-06-30 11:46:39,163 INFO  StlExportService.cs: 134 - Set coordinate system for STL export: 'link_1', fineMesh=False
+2026-06-30 11:46:39,177 INFO  StlExportService.cs: 146 - ExportStl: target='G:\Shared drives\shared drive\URDFs\robot\meshes\link1\component_0_23.stl' componentCount=1
+2026-06-30 11:46:39,180 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 1 components total
+2026-06-30 11:46:39,210 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=G:\Shared drives\shared drive\URDFs\robot\meshes\link1\component_0_23.stl
+2026-06-30 11:46:39,213 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: G:\Shared drives\shared drive\URDFs\robot\meshes\link1\component_0_23.stl type=3
+2026-06-30 11:46:39,230 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_0_23.STL' ? 'component_0_23.stl'
+2026-06-30 11:46:39,234 INFO  StlExportService.cs: 210 - Exported STL to: 'G:\Shared drives\shared drive\URDFs\robot\meshes\link1\component_0_23.stl' (warnings=0)
+2026-06-30 11:46:39,251 INFO  UrdfExportService.cs: 827 - Link 'link_2': exporting 1 visual mesh(es) to 'G:\Shared drives\shared drive\URDFs\robot\meshes'
+2026-06-30 11:46:39,253 INFO  StlExportService.cs: 134 - Set coordinate system for STL export: 'link_2', fineMesh=False
+2026-06-30 11:46:39,262 INFO  StlExportService.cs: 146 - ExportStl: target='G:\Shared drives\shared drive\URDFs\robot\meshes\link_2\component_0_25.stl' componentCount=1
+2026-06-30 11:46:39,263 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 1 components total
+2026-06-30 11:46:39,297 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=G:\Shared drives\shared drive\URDFs\robot\meshes\link_2\component_0_25.stl
+2026-06-30 11:46:39,299 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: G:\Shared drives\shared drive\URDFs\robot\meshes\link_2\component_0_25.stl type=3
+2026-06-30 11:46:39,318 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_0_25.STL' ? 'component_0_25.stl'
+2026-06-30 11:46:39,321 INFO  StlExportService.cs: 210 - Exported STL to: 'G:\Shared drives\shared drive\URDFs\robot\meshes\link_2\component_0_25.stl' (warnings=0)
+2026-06-30 11:46:39,345 INFO  UrdfExportService.cs: 827 - Link 'link_3': exporting 1 visual mesh(es) to 'G:\Shared drives\shared drive\URDFs\robot\meshes'
+2026-06-30 11:46:39,376 INFO  StlExportService.cs: 134 - Set coordinate system for STL export: 'link_3', fineMesh=False
+2026-06-30 11:46:39,387 INFO  StlExportService.cs: 146 - ExportStl: target='G:\Shared drives\shared drive\URDFs\robot\meshes\link_3\component_0_24.stl' componentCount=1
+2026-06-30 11:46:39,388 INFO  StlExportService.cs: 150 - ExportStl: showing 1 leaf part(s) + ancestors = 1 components total
+2026-06-30 11:46:39,419 DEBUG SolidWorksService.cs: 168 - AssemblyDoc.FileSavePostNotify fired: type=3 file=G:\Shared drives\shared drive\URDFs\robot\meshes\link_3\component_0_24.stl
+2026-06-30 11:46:39,420 DEBUG SwAddIn.EventHandlers.cs: 243 - OnFileSavePost: G:\Shared drives\shared drive\URDFs\robot\meshes\link_3\component_0_24.stl type=3
+2026-06-30 11:46:39,437 DEBUG StlExportService.cs: 248 - NormalizeFileCase: renamed 'component_0_24.STL' ? 'component_0_24.stl'
+2026-06-30 11:46:39,442 INFO  StlExportService.cs: 210 - Exported STL to: 'G:\Shared drives\shared drive\URDFs\robot\meshes\link_3\component_0_24.stl' (warnings=0)
+2026-06-30 11:46:39,471 INFO  UrdfExportService.cs: 876 - Link 'link_4': no visual components, skipping STL export
+2026-06-30 11:46:39,476 INFO  UrdfExportService.cs: 876 - Link 'link_4_': no visual components, skipping STL export
+2026-06-30 11:46:39,500 INFO  UrdfExportService.cs: 372 - URDF written to G:\Shared drives\shared drive\URDFs\robot\urdf\robot.urdf
+2026-06-30 11:46:39,518 INFO  UrdfExportService.cs: 1297 - Wrote metadata sidecar: 'G:\Shared drives\shared drive\URDFs\robot\robot_metadata.json'
+2026-06-30 11:46:39,535 INFO  UrdfExportService.cs: 128 - Restored original STL export preferences
+2026-06-30 11:46:39,538 INFO  UrdfExportService.cs: 128 - Export completed

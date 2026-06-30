@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Mentee Robotics LTD-->
+<robot name="robot">
+  <material name="SOLIDWORKS_Materials|6061-T6_(SS)|164">
+    <color rgba="0.8980392157 0.9176470588 0.9294117647 1" />
+  </material>
+  <material name="Custom_Materials|17-4_PH_H900">
+    <color rgba="0.6980392157 0.6980392157 0.6980392157 1" />
+  </material>
+  <material name="SOLIDWORKS_Materials|AISI_304|1">
+    <color rgba="0.6470588235 0.6196078431 0.5882352941 1" />
+  </material>
+  <material name="SOLIDWORKS_Materials|Rubber|79">
+    <color rgba="0.2980392157 0.2980392157 0.2980392157 1" />
+  </material>
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-0.03668944236 -1.378044267E-05 -0.5665630418" rpy="0 0 0" />
+      <mass value="1.880591247" />
+      <inertia ixx="0.03915808668" ixy="2.098688803E-07" ixz="0.0008236686558" iyy="0.04041366541" iyz="-2.068388886E-06" izz="0.00231368708" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/base_link/component_0_21_21.stl" />
+      </geometry>
+      <material name="SOLIDWORKS_Materials|6061-T6_(SS)|164" />
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/base_link/component_1_21_85.stl" />
+      </geometry>
+      <material name="SOLIDWORKS_Materials|6061-T6_(SS)|164" />
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/base_link/component_2_21_30.stl" />
+      </geometry>
+      <material name="SOLIDWORKS_Materials|6061-T6_(SS)|164" />
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/base_link/component_3_21_31.stl" />
+      </geometry>
+      <material name="SOLIDWORKS_Materials|6061-T6_(SS)|164" />
+    </visual>
+  </link>
+  <joint name="base_link_to_new_link" type="revolute">
+    <origin xyz="-0.08421932783 0 -0.5842061602" rpy="-1.570796327 -0.4088553244 1.570796327" />
+    <parent link="base_link" />
+    <child link="motor_down" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" velocity="1" effort="1" />
+  </joint>
+  <link name="motor_down">
+    <inertial>
+      <origin xyz="0.005300563095 4.098854107E-07 0.0003355917088" rpy="0 0 0" />
+      <mass value="0.1520232008" />
+      <inertia ixx="5.002545652E-05" ixy="-2.222769843E-07" ixz="-3.068970612E-06" iyy="7.9769514E-05" iyz="3.621420167E-11" izz="0.0001268029864" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/motor_down/component_0_21_23.stl" />
+      </geometry>
+      <material name="Custom_Materials|17-4_PH_H900" />
+    </visual>
+  </link>
+  <joint name="motor_down_crank_roll_joint" type="revolute">
+    <origin xyz="0.0450000014 0 0.018" rpy="0 0 0.4088553244" />
+    <parent link="motor_down" />
+    <child link="motor_down_crank_roll" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" velocity="1" effort="1" />
+  </joint>
+  <link name="motor_down_crank_roll">
+    <inertial>
+      <origin xyz="-1.657142534E-09 -3.005131699E-10 -0.001267503997" rpy="0 0 0" />
+      <mass value="0.008673585371" />
+      <inertia ixx="4.382666828E-07" ixy="3.97046694E-23" ixz="2.48942567E-21" iyy="4.382666828E-07" iyz="1.849716213E-22" izz="8.154870604E-08" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/motor_down_crank_roll/component_0_21_111.stl" />
+      </geometry>
+      <material name="Custom_Materials|17-4_PH_H900" />
+    </visual>
+  </link>
+  <joint name="motor_down_crank_yaw_joint" type="revolute">
+    <origin xyz="0 0 0" rpy="1.570582648 -0.01309308882 1.587115342" />
+    <parent link="motor_down_crank_roll" />
+    <child link="motor_down_crank_yaw" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" velocity="1" effort="1" />
+  </joint>
+  <link name="motor_down_crank_yaw">
+    <inertial>
+      <origin xyz="0.1016481768 -0.001374025996 -0.00166224253" rpy="0 0 0" />
+      <mass value="0.3312266505" />
+      <inertia ixx="1.686073529E-05" ixy="2.019466749E-05" ixz="2.675498706E-05" iyy="0.001624643749" iyz="-3.363803788E-07" izz="0.001624357381" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/motor_down_crank_yaw/component_0_21_26_22.stl" />
+      </geometry>
+      <material name="SOLIDWORKS_Materials|AISI_304|1" />
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/motor_down_crank_yaw/component_1_21_25.stl" />
+      </geometry>
+      <material name="Custom_Materials|17-4_PH_H900" />
+    </visual>
+  </link>
+  <joint name="crank_foot_down_roll_joint" type="revolute">
+    <origin xyz="0.2099545995 -0.002781906005 -0.003365584216" rpy="-0.01631621716 -0.0002136608557 1.557703238" />
+    <parent link="motor_down_crank_yaw" />
+    <child link="crank_foot_down_roll" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" velocity="1" effort="1" />
+  </joint>
+  <link name="crank_foot_down_roll">
+    <inertial>
+      <origin xyz="-8.949369024E-13 -3.419375894E-12 -0.001267503997" rpy="0 0 0" />
+      <mass value="0.008673585371" />
+      <inertia ixx="4.382666828E-07" ixy="7.940933881E-23" ixz="-1.229483188E-22" iyy="4.382666828E-07" iyz="5.74961539E-23" izz="8.154870604E-08" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/crank_foot_down_roll/component_0_21_119.stl" />
+      </geometry>
+      <material name="Custom_Materials|17-4_PH_H900" />
+    </visual>
+  </link>
+  <joint name="crank_foot_down_roll_to_new_link" type="revolute">
+    <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+    <parent link="crank_foot_down_roll" />
+    <child link="crank_foot_down_yaw" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" velocity="1" effort="1" />
+  </joint>
+  <link name="crank_foot_down_yaw">
+    <inertial>
+      <origin xyz="1.852684672E-15 1.842970221E-14 1.409011796E-13" rpy="0 0 0" />
+      <mass value="0.01050246763" />
+      <inertia ixx="3.699176645E-07" ixy="7.580776033E-12" ixz="-7.274656458E-13" iyy="2.752562188E-07" iyz="-3.308714995E-24" izz="2.752562188E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/crank_foot_down_yaw/component_0_21_29_22.stl" />
+      </geometry>
+      <material name="SOLIDWORKS_Materials|AISI_304|1" />
+    </visual>
+  </link>
+  <joint name="lo2_j" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="crank_foot_down_yaw" />
+    <child link="loc2" />
+  </joint>
+  <link name="loc2">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.0001" />
+      <inertia ixx="1E-07" ixy="0" ixz="0" iyy="1E-07" iyz="0" izz="1E-07" />
+    </inertial>
+  </link>
+  <joint name="motor_up_joint" type="revolute">
+    <origin xyz="-0.08421932783 0 -0.4792061601" rpy="1.570796327 -0.4097507864 -1.570796327" />
+    <parent link="base_link" />
+    <child link="motor_up" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" velocity="1" effort="1" />
+  </joint>
+  <link name="motor_up">
+    <inertial>
+      <origin xyz="0.005300563095 4.098854106E-07 0.0003355917087" rpy="0 0 0" />
+      <mass value="0.1520232008" />
+      <inertia ixx="5.002545652E-05" ixy="-2.222769843E-07" ixz="-3.068970612E-06" iyy="7.9769514E-05" iyz="3.621420167E-11" izz="0.0001268029864" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/motor_up/component_0_21_22.stl" />
+      </geometry>
+      <material name="Custom_Materials|17-4_PH_H900" />
+    </visual>
+  </link>
+  <joint name="motor_up_crank_roll_joint" type="revolute">
+    <origin xyz="0.04499999893 0 0.018" rpy="0 0 2.731841867" />
+    <parent link="motor_up" />
+    <child link="motor_up_crank_roll" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" velocity="1" effort="1" />
+  </joint>
+  <link name="motor_up_crank_roll">
+    <inertial>
+      <origin xyz="-9.823706293E-10 -4.269430365E-10 -0.001267503997" rpy="0 0 0" />
+      <mass value="0.008673585371" />
+      <inertia ixx="4.382666828E-07" ixy="-8.271806126E-24" ixz="1.257086221E-21" iyy="4.382666828E-07" iyz="-1.403215922E-22" izz="8.154870604E-08" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/motor_up_crank_roll/component_0_21_114.stl" />
+      </geometry>
+      <material name="Custom_Materials|17-4_PH_H900" />
+    </visual>
+  </link>
+  <joint name="motor_up_crank_yaw_joint" type="revolute">
+    <origin xyz="0 0 0" rpy="1.548304533 -0.009186774838 1.540403867" />
+    <parent link="motor_up_crank_roll" />
+    <child link="motor_up_crank_yaw" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" velocity="1" effort="1" />
+  </joint>
+  <link name="motor_up_crank_yaw">
+    <inertial>
+      <origin xyz="0.1539589326 -0.001378366345 -0.001378305969" rpy="0 0 0" />
+      <mass value="0.4686998401" />
+      <inertia ixx="2.162357488E-05" ixy="4.479650942E-05" ixz="4.164943136E-05" iyy="0.004779614227" iyz="-3.903093386E-07" izz="0.004779576795" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/motor_up_crank_yaw/component_0_21_28_22.stl" />
+      </geometry>
+      <material name="SOLIDWORKS_Materials|AISI_304|1" />
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/motor_up_crank_yaw/component_1_21_24.stl" />
+      </geometry>
+      <material name="Custom_Materials|17-4_PH_H900" />
+    </visual>
+  </link>
+  <joint name="crank_foot_up_roll_joint" type="revolute">
+    <origin xyz="0.3149739701 -0.002863517987 -0.002863283707" rpy="-3.110993535 -0.02249084406 1.561607228" />
+    <parent link="motor_up_crank_yaw" />
+    <child link="crank_foot_up_roll" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" velocity="1" effort="1" />
+  </joint>
+  <link name="crank_foot_up_roll">
+    <inertial>
+      <origin xyz="7.122635814E-13 3.322564446E-12 -0.001267503997" rpy="0 0 0" />
+      <mass value="0.008673585371" />
+      <inertia ixx="4.382666828E-07" ixy="6.6174449E-23" ixz="-6.632011956E-24" iyy="4.382666828E-07" iyz="-1.514864851E-23" izz="8.154870604E-08" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/crank_foot_up_roll/component_0_21_118.stl" />
+      </geometry>
+      <material name="Custom_Materials|17-4_PH_H900" />
+    </visual>
+  </link>
+  <joint name="crank_foot_up_yaw_joint" type="revolute">
+    <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+    <parent link="crank_foot_up_roll" />
+    <child link="crank_foot_up_yaw" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" velocity="1" effort="1" />
+  </joint>
+  <link name="crank_foot_up_yaw">
+    <inertial>
+      <origin xyz="-3.698777395E-13 -3.330669074E-15 -1.003502836E-13" rpy="0 0 0" />
+      <mass value="0.01050246763" />
+      <inertia ixx="3.699176645E-07" ixy="-5.638298664E-12" ixz="-5.119273357E-12" iyy="2.752562188E-07" iyz="2.970281332E-28" izz="2.752562188E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/crank_foot_up_yaw/component_0_21_27_22.stl" />
+      </geometry>
+      <material name="SOLIDWORKS_Materials|AISI_304|1" />
+    </visual>
+  </link>
+  <joint name="loc1_j" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="crank_foot_up_yaw" />
+    <child link="loc1" />
+  </joint>
+  <link name="loc1">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.0001" />
+      <inertia ixx="1E-07" ixy="0" ixz="0" iyy="1E-07" iyz="0" izz="1E-07" />
+    </inertial>
+  </link>
+  <joint name="pitch_joint" type="revolute">
+    <origin xyz="-0.036185817 0 -0.7942061602" rpy="1.570796327 0 -3.141592654" />
+    <parent link="base_link" />
+    <child link="pitch" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" velocity="1" effort="1" />
+  </joint>
+  <link name="pitch">
+    <inertial>
+      <origin xyz="1.766504653E-08 -4.607825188E-08 -1.238852626E-08" rpy="0 0 0" />
+      <mass value="0.2745167213" />
+      <inertia ixx="7.232394384E-05" ixy="-7.128230735E-10" ixz="-4.668244298E-13" iyy="0.0001287507871" iyz="-7.535589364E-12" izz="7.358003005E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/pitch/component_0_21_33.stl" />
+      </geometry>
+      <material name="SOLIDWORKS_Materials|AISI_304|1" />
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/pitch/component_1_21_36.stl" />
+      </geometry>
+      <material name="SOLIDWORKS_Materials|AISI_304|1" />
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/pitch/component_2_21_138.stl" />
+      </geometry>
+      <material name="Custom_Materials|17-4_PH_H900" />
+    </visual>
+  </link>
+  <joint name="roll_joint" type="revolute">
+    <origin xyz="0 0 0" rpy="-1.570796327 0 -1.570796327" />
+    <parent link="pitch" />
+    <child link="roll" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" velocity="1" effort="1" />
+  </joint>
+  <link name="roll">
+    <inertial>
+      <origin xyz="0.0299376568 3.409427821E-07 -0.01664310291" rpy="0 0 0" />
+      <mass value="1.245962664" />
+      <inertia ixx="0.008612473377" ixy="1.53576609E-08" ixz="0.0008436956836" iyy="0.007847646115" iyz="2.870605913E-07" izz="0.001711999054" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/roll/component_0_21_34.stl" />
+      </geometry>
+      <material name="SOLIDWORKS_Materials|6061-T6_(SS)|164" />
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/roll/component_1_21_32.stl" />
+      </geometry>
+      <material name="SOLIDWORKS_Materials|6061-T6_(SS)|164" />
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/roll/component_2_21_207_23.stl" />
+      </geometry>
+      <material name="SOLIDWORKS_Materials|Rubber|79" />
+    </visual>
+  </link>
+  <joint name="loc1_joint_" type="fixed">
+    <origin xyz="-0.01800000003 0.03449999997 0.06599999992" rpy="0 0 -1.570796327" />
+    <parent link="roll" />
+    <child link="loc1_" />
+  </joint>
+  <link name="loc1_">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.0001" />
+      <inertia ixx="1E-07" ixy="0" ixz="0" iyy="1E-07" iyz="0" izz="1E-07" />
+    </inertial>
+  </link>
+  <joint name="loc2_joint_" type="fixed">
+    <origin xyz="-0.01800000003 -0.03450000004 0.06599999992" rpy="0 0 1.570796327" />
+    <parent link="roll" />
+    <child link="loc2_" />
+  </joint>
+  <link name="loc2_">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.0001" />
+      <inertia ixx="1E-07" ixy="0" ixz="0" iyy="1E-07" iyz="0" izz="1E-07" />
+    </inertial>
+  </link>
+</robot>
