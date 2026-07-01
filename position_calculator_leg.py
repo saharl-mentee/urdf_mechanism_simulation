@@ -71,7 +71,13 @@ motor_down_data = np.zeros((len(pitch_angles), len(roll_angles)))
 
 try:
     for i, target_pitch in enumerate(pitch_angles):
-        for j, target_roll in enumerate(roll_angles):
+        # ZIGZAG LOGIC: Reverse the roll angles every other pitch step
+        if i % 2 == 0:
+            current_roll_angles = roll_angles
+        else:
+            current_roll_angles = roll_angles[::-1] # Read the array backward
+            
+        for j, target_roll in enumerate(current_roll_angles):
             
             # 1. Drive Pitch and Roll to the target grid position
             p.setJointMotorControl2(
@@ -91,11 +97,10 @@ try:
             )
             
             # 2. Step the simulation multiple times to let the constraints settle
-            # We don't use time.sleep() here so it computes as fast as your CPU allows
             for _ in range(100):
                 p.stepSimulation()
                 # Uncomment the next line ONLY if you want to watch it move slowly in the GUI
-                # time.sleep(1./240.) 
+                # time.sleep(1./2400.) 
             
             # 3. Read the resulting passive angles of the motors
             mot_down_state = p.getJointState(robot_id, drive_down_idx)[0]
