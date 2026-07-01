@@ -5,6 +5,7 @@ import pybullet_data
 import time
 import matplotlib.pyplot as plt
 import pandas as pd
+from scipy.interpolate import griddata
 
 
 def pivot_df(df, index_col, columns_col, values_col):
@@ -76,11 +77,54 @@ roll_idx = joint_dict['roll_joint']
 for j in range(num_joints):
     p.setJointMotorControl2(robot_id, j, p.VELOCITY_CONTROL, force=0)
 
+
+# =========================================================================
+# STAGE 1: AUTO-FIND MOTOR BOUNDS USING INVERSE KINEMATICS
+# =========================================================================
+print("STAGE 1: Tracing Ellipse Perimeter to find Motor Bounds...")
+PITCH_MAX_LIMIT = 20.0
+ROLL_MAX_LIMIT = 20.0
+
+# Generate points along the perimeter of the ellipse (0 to 2*PI)
+theta = np.linspace(0, 2 * np.pi, 50)
+pitch_perimeter = np.deg2rad(PITCH_MAX_LIMIT * np.cos(theta))
+roll_perimeter = np.deg2rad(ROLL_MAX_LIMIT * np.sin(theta))
+
+mot_down_perim = []
+mot_up_perim = []
+
+for p_target, r_target in zip(pitch_perimeter, roll_perimeter):
+    p.setJointMotorControl2(robot_id, pitch_idx, p.POSITION_CONTROL, targetPosition=p_target, force=5000)
+    p.setJointMotorControl2(robot_id, roll_idx, p.POSITION_CONTROL, targetPosition=r_target, force=5000)
+    
+    for _ in range(100):
+        p.stepSimulation()
+        time.sleep(1./240.) 
+        
+    mot_down_perim.append(p.getJointState(robot_id, drive_down_idx)[0])
+    mot_up_perim.append(p.getJointState(robot_id, drive_up_idx)[0])
+
+# Auto-calculate the bounding box for the motors
+MD_MIN, MD_MAX = min(mot_down_perim), max(mot_down_perim)
+MU_MIN, MU_MAX = min(mot_up_perim), max(mot_up_perim)
+
+print(f"Auto-Bounds Found! Motor Down: [{np.rad2deg(MD_MIN):.1f}°, {np.rad2deg(MD_MAX):.1f}°]")
+print(f"Auto-Bounds Found! Motor Up: [{np.rad2deg(MU_MIN):.1f}°, {np.rad2deg(MU_MAX):.1f}°]")
+
+# Release the passive joints back to normal before Stage 2
+p.setJointMotorControl2(robot_id, pitch_idx, p.VELOCITY_CONTROL, force=0)
+p.setJointMotorControl2(robot_id, roll_idx, p.VELOCITY_CONTROL, force=0)
+
 # --- 6. Generate the Grid ---
 # Define the range of motion for pitch and roll in degrees, then convert to radians
 # Example: -15 to +15 degrees, taking 5 steps (e.g., -15, -7.5, 0, 7.5, 15)
-mot_down_angles = np.deg2rad(np.linspace(-30, 30, 10))
-mot_up_angles = np.deg2rad(np.linspace(-30, 30, 10))
+mot_down_angles = np.deg2rad(np.linspace(-150, 150, 100))
+mot_up_angles = np.deg2rad(np.linspace(-150, 150, 100))
+
+PITCH_MIN = -20.0
+PITCH_MAX = 50.0
+ROLL_MIN = -20.0
+ROLL_MAX = 20.0
 
 # --- 7. Run the Grid Simulation ---
 print("Starting IK Grid Calculation...")
@@ -90,6 +134,7 @@ print("-" * 75)
 kinematic_data = []
 pitch_data = np.zeros((len(mot_down_angles), len(mot_up_angles)))
 roll_data = np.zeros((len(mot_down_angles), len(mot_up_angles)))
+out_of_bounds_count = 0
 
 try:
     for i, target_mot_down in enumerate(mot_down_angles):
@@ -128,16 +173,28 @@ try:
             pitch_state = p.getJointState(robot_id, pitch_idx)[0]
             roll_state = p.getJointState(robot_id, roll_idx)[0]
 
-            # 4. Save and Print the data
-            kinematic_data.append([
-                np.rad2deg(target_mot_down),
-                np.rad2deg(target_mot_up),
-                np.rad2deg(pitch_state),
-                np.rad2deg(roll_state)
-            ])
+            # Convert to degrees BEFORE appending
+            pitch_deg = np.rad2deg(pitch_state)
+            roll_deg = np.rad2deg(roll_state)
+            mot_down_deg = np.rad2deg(target_mot_down)
+            mot_up_deg = np.rad2deg(target_mot_up)
             
-            print(f"Req Mot_Dn: {np.rad2deg(target_mot_down):+6.1f}° | Req Mot_Up: {np.rad2deg(target_mot_up):+6.1f}° || "
-                  f"Result Pitch: {np.rad2deg(pitch_state):+6.1f}° | Result Roll: {np.rad2deg(roll_state):+6.1f}°")
+            # 4. BOUNDARY FILTER: Only save if within bounds
+            # Notice we ONLY append here, and we append the degree variables!
+            if (PITCH_MIN <= pitch_deg <= PITCH_MAX) and (ROLL_MIN <= roll_deg <= ROLL_MAX):
+                kinematic_data.append([
+                    mot_down_deg,
+                    mot_up_deg,
+                    pitch_deg,
+                    roll_deg
+                ])
+                print(f"✅ SAVED | Mot_Dn: {mot_down_deg:+6.1f}° | Mot_Up: {mot_up_deg:+6.1f}° || "
+                      f"Pitch: {pitch_deg:+6.1f}° | Roll: {roll_deg:+6.1f}°")
+            else:
+                out_of_bounds_count += 1
+                print(f"❌ SKIP  | Mot_Dn: {mot_down_deg:+6.1f}° | Mot_Up: {mot_up_deg:+6.1f}° || "
+                      f"Pitch: {pitch_deg:+6.1f}° | Roll: {roll_deg:+6.1f}°", end='\r')
+            
 
     print("-" * 75)
     print(f"Grid calculation complete. Collected {len(kinematic_data)} data points.")
@@ -150,13 +207,19 @@ try:
         columns=['Motor Down (deg)', 'Motor Up (deg)', 'Pitch (deg)', 'Roll (deg)']
     )
     
-    X, Y, pitch = pivot_df(df, 'Motor Down (deg)', 'Motor Up (deg)', 'Pitch (deg)')
-    X, Y, roll = pivot_df(df, 'Motor Down (deg)', 'Motor Up (deg)', 'Roll (deg)')
+    # X, Y, pitch = pivot_df(df, 'Motor Down (deg)', 'Motor Up (deg)', 'Pitch (deg)')
+    # X, Y, roll = pivot_df(df, 'Motor Down (deg)', 'Motor Up (deg)', 'Roll (deg)')
+    
+    X, Y = np.mgrid[df['Motor Down (deg)'].min():df['Motor Down (deg)'].max():200j, 
+                    df['Motor Up (deg)'].min():df['Motor Up (deg)'].max():200j]
+   
+    pitch = griddata((df['Motor Down (deg)'], df['Motor Up (deg)']), df['Pitch (deg)'], (X, Y), method='linear')
+    roll = griddata((df['Motor Down (deg)'], df['Motor Up (deg)']), df['Roll (deg)'], (X, Y), method='linear')
 
 
     fig = plt.figure(figsize=(10, 7))
     ax = fig.add_subplot(111, projection='3d')
-    surf = ax.plot_surface(np.rad2deg(X), np.rad2deg(Y), pitch, 
+    surf = ax.plot_surface(X, Y, pitch, 
                        cmap='coolwarm',    # Color map
                        linewidth=0,        # Removes grid lines on the surface
                        antialiased=True,   # Smooths the edges
@@ -171,7 +234,7 @@ try:
     
     fig = plt.figure(figsize=(10, 7))
     ax = fig.add_subplot(111, projection='3d')
-    surf = ax.plot_surface(np.rad2deg(X), np.rad2deg(Y), roll, 
+    surf = ax.plot_surface(X, Y, roll, 
                        cmap='coolwarm',    # Color map
                        linewidth=0,        # Removes grid lines on the surface
                        antialiased=True,   # Smooths the edges
