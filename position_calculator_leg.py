@@ -4,6 +4,28 @@ import pybullet as p
 import pybullet_data
 import time
 import matplotlib.pyplot as plt
+import pandas as pd
+
+
+def pivot_df(df, index_col, columns_col, values_col):
+    z_pivot = df.pivot(
+    index=index_col,   # This becomes the X-axis
+    columns=columns_col,   # This becomes the Y-axis
+    values=values_col        # This becomes the Z-axis height
+    )
+
+    # --- 2. Create the Meshgrids ---
+    # Extract the unique 1D coordinates from the pivot table
+    x_1d = z_pivot.index.values
+    y_1d = z_pivot.columns.values
+
+    # Create the 2D X and Y grids. 
+    # We use indexing='ij' so the shapes perfectly match our z_pivot matrix!
+    X, Y = np.meshgrid(x_1d, y_1d, indexing='ij')
+
+    # Extract the 2D Z grid directly from the pivot table values
+    Z = z_pivot.values
+    return X, Y, Z
 
 # --- 1. Initialize PyBullet ---
 physicsClient = p.connect(p.GUI) 
@@ -57,8 +79,8 @@ for j in range(num_joints):
 # --- 6. Generate the Grid ---
 # Define the range of motion for pitch and roll in degrees, then convert to radians
 # Example: -15 to +15 degrees, taking 5 steps (e.g., -15, -7.5, 0, 7.5, 15)
-pitch_angles = np.deg2rad(np.arange(-20, 50, 2))
-roll_angles = np.deg2rad(np.arange(-20, 20, 2))
+mot_down_angles = np.deg2rad(np.linspace(-30, 30, 10))
+mot_up_angles = np.deg2rad(np.linspace(-30, 30, 10))
 
 # --- 7. Run the Grid Simulation ---
 print("Starting IK Grid Calculation...")
@@ -66,33 +88,33 @@ print("-" * 75)
 
 # Optional list to store results if you want to plot or save them later
 kinematic_data = []
-motor_up_data = np.zeros((len(pitch_angles), len(roll_angles)))
-motor_down_data = np.zeros((len(pitch_angles), len(roll_angles)))
+pitch_data = np.zeros((len(mot_down_angles), len(mot_up_angles)))
+roll_data = np.zeros((len(mot_down_angles), len(mot_up_angles)))
 
 try:
-    for i, target_pitch in enumerate(pitch_angles):
+    for i, target_mot_down in enumerate(mot_down_angles):
         # ZIGZAG LOGIC: Reverse the roll angles every other pitch step
         if i % 2 == 0:
-            current_roll_angles = roll_angles
+            current_roll_angles = mot_up_angles
         else:
-            current_roll_angles = roll_angles[::-1] # Read the array backward
+            current_roll_angles = mot_up_angles[::-1] # Read the array backward
             
-        for j, target_roll in enumerate(current_roll_angles):
+        for j, target_mot_up in enumerate(current_roll_angles):
             
             # 1. Drive Pitch and Roll to the target grid position
             p.setJointMotorControl2(
                 bodyUniqueId=robot_id,
-                jointIndex=pitch_idx,
+                jointIndex=drive_down_idx,
                 controlMode=p.POSITION_CONTROL,
-                targetPosition=target_pitch,
+                targetPosition=target_mot_down,
                 force=5000 
             )
             
             p.setJointMotorControl2(
                 bodyUniqueId=robot_id,
-                jointIndex=roll_idx,
+                jointIndex=drive_up_idx,
                 controlMode=p.POSITION_CONTROL,
-                targetPosition=target_roll,
+                targetPosition=target_mot_up,
                 force=5000 
             )
             
@@ -103,51 +125,61 @@ try:
                 # time.sleep(1./2400.) 
             
             # 3. Read the resulting passive angles of the motors
-            mot_down_state = p.getJointState(robot_id, drive_down_idx)[0]
-            mot_up_state = p.getJointState(robot_id, drive_up_idx)[0]
-            motor_up_data[i,j] = np.rad2deg(mot_up_state)
-            motor_down_data[i,j] = np.rad2deg(mot_down_state)
+            pitch_state = p.getJointState(robot_id, pitch_idx)[0]
+            roll_state = p.getJointState(robot_id, roll_idx)[0]
 
             # 4. Save and Print the data
-            kinematic_data.append({
-                "pitch_deg": np.rad2deg(target_pitch),
-                "roll_deg": np.rad2deg(target_roll),
-                "mot_down_deg": np.rad2deg(mot_down_state),
-                "mot_up_deg": np.rad2deg(mot_up_state)
-            })
+            kinematic_data.append([
+                np.rad2deg(target_mot_down),
+                np.rad2deg(target_mot_up),
+                np.rad2deg(pitch_state),
+                np.rad2deg(roll_state)
+            ])
             
-            print(f"Target Pitch: {np.rad2deg(target_pitch):+6.1f}° | Target Roll: {np.rad2deg(target_roll):+6.1f}° || "
-                  f"Req Mot_Dn: {np.rad2deg(mot_down_state):+6.1f}° | Req Mot_Up: {np.rad2deg(mot_up_state):+6.1f}°")
+            print(f"Req Mot_Dn: {np.rad2deg(target_mot_down):+6.1f}° | Req Mot_Up: {np.rad2deg(target_mot_up):+6.1f}° || "
+                  f"Result Pitch: {np.rad2deg(pitch_state):+6.1f}° | Result Roll: {np.rad2deg(roll_state):+6.1f}°")
 
     print("-" * 75)
     print(f"Grid calculation complete. Collected {len(kinematic_data)} data points.")
     
-    i=0
-    j=0
-    # Keep window open at the end until user closes it
-    while i < len(pitch_angles) and j < len(roll_angles):
-        p.stepSimulation()
-        time.sleep(1./240.)
-        i +=1
-        j +=1
-    
-    np.save("kinematic_results_up.npy", motor_up_data)
-    np.save("kinematic_results_down.npy", motor_down_data)
     p.disconnect()
     print("Simulator closed.")
     
-    x, y = np.meshgrid(pitch_angles, roll_angles, indexing='ij')  # Create a meshgrid for plotting
+    df = pd.DataFrame(
+        kinematic_data, 
+        columns=['Motor Down (deg)', 'Motor Up (deg)', 'Pitch (deg)', 'Roll (deg)']
+    )
+    
+    X, Y, pitch = pivot_df(df, 'Motor Down (deg)', 'Motor Up (deg)', 'Pitch (deg)')
+    X, Y, roll = pivot_df(df, 'Motor Down (deg)', 'Motor Up (deg)', 'Roll (deg)')
+
+
     fig = plt.figure(figsize=(10, 7))
     ax = fig.add_subplot(111, projection='3d')
-    surf = ax.plot_surface(np.rad2deg(x), np.rad2deg(y), motor_up_data, 
+    surf = ax.plot_surface(np.rad2deg(X), np.rad2deg(Y), pitch, 
                        cmap='coolwarm',    # Color map
                        linewidth=0,        # Removes grid lines on the surface
                        antialiased=True,   # Smooths the edges
                        shade=True,         # Enables lighting/shading
                        alpha=0.9)          # Slight transparency
-    plt.title('motor up')
-    plt.xlabel('pitch angle')
-    plt.ylabel('roll angle')
+    plt.title('pitch [deg]')
+    plt.xlabel('motor down angle [deg]')
+    plt.ylabel('motor up angle [deg]')
+    plt.colorbar(surf, shrink=0.5, aspect=5)  # Add a color bar to show the scale
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    
+    fig = plt.figure(figsize=(10, 7))
+    ax = fig.add_subplot(111, projection='3d')
+    surf = ax.plot_surface(np.rad2deg(X), np.rad2deg(Y), roll, 
+                       cmap='coolwarm',    # Color map
+                       linewidth=0,        # Removes grid lines on the surface
+                       antialiased=True,   # Smooths the edges
+                       shade=True,         # Enables lighting/shading
+                       alpha=0.9)          # Slight transparency
+    plt.title('roll [deg]')
+    plt.xlabel('motor down angle [deg]')
+    plt.ylabel('motor up angle [deg]')
     plt.colorbar(surf, shrink=0.5, aspect=5)  # Add a color bar to show the scale
     plt.xticks(rotation=45)
     plt.tight_layout()
