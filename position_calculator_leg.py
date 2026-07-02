@@ -6,6 +6,8 @@ import time
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy.interpolate import griddata
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 
 def pivot_df(df, index_col, columns_col, values_col):
@@ -132,8 +134,8 @@ p.setJointMotorControl2(robot_id, pitch_idx, p.VELOCITY_CONTROL, force=0)
 p.setJointMotorControl2(robot_id, roll_idx, p.VELOCITY_CONTROL, force=0)
 
 padding = 0.05 
-mot_down_angles = np.linspace(MD_MIN - padding, MD_MAX + padding, 20)
-mot_up_angles = np.linspace(MU_MIN - padding, MU_MAX + padding, 20)
+mot_down_angles = np.linspace(MD_MIN - padding, MD_MAX + padding, 100)
+mot_up_angles = np.linspace(MU_MIN - padding, MU_MAX + padding, 100)
 
 kinematic_data = []
 
@@ -170,6 +172,8 @@ MD = df_valid[:, 0]
 MU = df_valid[:, 1]
 PITCH = df_valid[:, 2]
 ROLL = df_valid[:, 3]
+df = pd.DataFrame(df_valid, columns=['Motor Down', 'Motor Up', 'Pitch', 'Roll'])
+df.to_csv('mechanism_kinematic_data.csv', index=False)
 
 # 1. Create a dense 2D meshgrid based on the min/max of the valid motors
 md_grid = np.linspace(MD.min(), MD.max(), 100)
@@ -212,4 +216,152 @@ ax2.grid(True)
 ax2.set_aspect('equal', 'box')
 
 plt.tight_layout()
-plt.show()
+# plt.show()
+
+# fig = go.Figure(data=[go.Surface(
+#     x=X, y=Y, z=Z_PITCH, colorscale='RdBu' # 'RdBu' is similar to Matplotlib's 'coolwarm'
+#     )])
+
+#     # 2. Customize the layout (Titles, Font Sizes, and Dimensions)
+# fig.update_layout(
+#         title={
+#             'text': 'Pitch Angles [deg]',
+#             'font': {'size': 24} # Setting title font size
+#         },
+#         scene=dict(
+#             xaxis_title='motor up angle [deg]',
+#             yaxis_title='motor down angle [deg]',
+#             zaxis_title='universal joint pitch angle [deg]'),
+        
+#         font=dict(
+#             family="Times New Roman, serif", # Setting a classic font family
+#             size=14,         # Base font size for the interactive plot
+#             color="black"
+#         ),
+#         autosize=False,
+#         width=900, 
+#         height=800,
+#         margin=dict(l=65, r=50, b=65, t=90) # Adjusts the padding around the plot
+#     )
+
+#     # 3. Save it as a standalone HTML file!
+# fig.write_html("foot_pitch.html")
+
+# fig = go.Figure(data=[go.Surface(
+#     x=X, y=Y, z=Z_ROLL, colorscale='RdBu' # 'RdBu' is similar to Matplotlib's 'coolwarm'
+#     )])
+
+#     # 2. Customize the layout (Titles, Font Sizes, and Dimensions)
+# fig.update_layout(
+#         title={
+#             'text': 'Roll Angles [deg]',
+#             'font': {'size': 24} # Setting title font size
+#         },
+#         scene=dict(
+#             xaxis_title='motor up angle [deg]',
+#             yaxis_title='motor down angle [deg]',
+#             zaxis_title='universal joint roll angle [deg]'),
+        
+#         font=dict(
+#             family="Times New Roman, serif", # Setting a classic font family
+#             size=14,         # Base font size for the interactive plot
+#             color="black"
+#         ),
+#         autosize=False,
+#         width=900, 
+#         height=800,
+#         margin=dict(l=65, r=50, b=65, t=90) # Adjusts the padding around the plot
+#     )
+
+#     # 3. Save it as a standalone HTML file!
+# fig.write_html("foot_roll.html")
+
+
+# 1. Create a subplot figure with 1 row and 2 columns
+# The 'specs' argument tells Plotly that both subplots are 3D surfaces
+fig = make_subplots(
+    rows=1, cols=2,
+    specs=[[{'type': 'surface'}, {'type': 'surface'}]],
+    subplot_titles=('Pitch Angles [deg]', 'Roll Angles [deg]')
+)
+
+# 2. Define custom hover templates
+# This allows you to see both Z values regardless of which plot you hover over
+hover_pitch = (
+    "Motor Up: %{x}<br>"
+    "Motor Down: %{y}<br>"
+    "Pitch: %{z}<br>"
+    "Roll: %{customdata}<br>"
+    "<extra></extra>" # Removes the secondary box next to the tooltip
+)
+
+hover_roll = (
+    "Motor Up: %{x}<br>"
+    "Motor Down: %{y}<br>"
+    "Pitch: %{customdata}<br>"
+    "Roll: %{z}<br>"
+    "<extra></extra>"
+)
+
+# 3. Add the Pitch surface (Row 1, Col 1)
+# We pass Z_ROLL into customdata so it shows up in the tooltip
+fig.add_trace(
+    go.Surface(
+        x=X, y=Y, z=Z_PITCH, 
+        customdata=Z_ROLL,
+        hovertemplate=hover_pitch,
+        colorscale='RdBu',
+        colorbar=dict(x=0.45, title='Pitch') # Shift colorbar to not overlap the second plot
+    ),
+    row=1, col=1
+)
+
+# 4. Add the Roll surface (Row 1, Col 2)
+# We pass Z_PITCH into customdata so it shows up in the tooltip
+fig.add_trace(
+    go.Surface(
+        x=X, y=Y, z=Z_ROLL,
+        customdata=Z_PITCH,
+        hovertemplate=hover_roll,
+        colorscale='RdBu', 
+        colorbar=dict(x=1.0, title='Roll')
+    ),
+    row=1, col=2
+)
+
+# 5. Customize the layout
+fig.update_layout(
+    title={
+        'text': 'Pitch and Roll Angles [deg]',
+        'font': {'size': 24},
+        'x': 0.5,             # Center the main title
+        'xanchor': 'center'
+    },
+    
+    # Configure the axes for the first subplot (Pitch)
+    scene=dict(
+        xaxis_title='motor up [deg]',
+        yaxis_title='motor down [deg]',
+        zaxis_title='pitch angle [deg]'
+    ),
+    
+    # Configure the axes for the second subplot (Roll)
+    scene2=dict(
+        xaxis_title='motor up [deg]',
+        yaxis_title='motor down [deg]',
+        zaxis_title='roll angle [deg]'
+    ),
+    
+    font=dict(
+        family="Times New Roman, serif",
+        size=14,
+        color="black"
+    ),
+    autosize=False,
+    width=1400, # Increased width to comfortably fit two 3D plots side-by-side
+    height=800,
+    margin=dict(l=65, r=50, b=65, t=90)
+)
+
+# 6. Save it as a single standalone HTML file
+fig.write_html("foot_pitch_and_roll.html")
